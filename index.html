@@ -3,453 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exportadora Romex S.A.</title>
+    <meta name="description" content="Exportadora Romex S.A. - Interfaz educativa sobre la transformación del grano de cacao y línea de tiempo empresarial">
+    <meta name="author" content="Proyecto Alianza SENATI - Romex">
+    <title>Exportadora Romex S.A. | Transformación del Cacao</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍫</text></svg>">
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0d47a1;
-            --primary-dark: #002171;
-            --accent: #2e7d32;
-            --accent-light: #e8f5e9;
-            --orange: #e65100;
-            --bg: #f4f6f9;
-            --card: #ffffff;
-            --text: #1a1a1a;
-            --text-secondary: #555;
-            --border: #e2e8f0;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.1);
-            --radius: 16px;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            line-height: 1.5;
-        }
-
-        /* ========== HEADER ========== */
-        .header {
-            background: var(--primary);
-            color: white;
-            padding: 0 24px;
-            height: 68px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 16px rgba(13, 71, 161, 0.25);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: white;
-        }
-
-        .logo-mark {
-            width: 38px;
-            height: 38px;
-            background: white;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 18px;
-            color: var(--primary);
-        }
-
-        .logo-text {
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .logo-text span {
-            color: #81c784;
-        }
-
-        /* ========== LAYOUT ========== */
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 40px 20px 80px;
-        }
-
-        /* ========== VIEWS ========== */
-        .view {
-            display: none;
-            animation: fadeUp 0.4s ease;
-        }
-
-        .view.active {
-            display: block;
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ========== HOME ========== */
-        .hero {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .hero h1 {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 10px;
-            letter-spacing: -0.5px;
-        }
-
-        .hero p {
-            font-size: 16px;
-            color: var(--text-secondary);
-            max-width: 480px;
-            margin: 0 auto;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 700px) {
-            .menu-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .menu-card.full {
-                grid-column: 1 / -1;
-            }
-        }
-
-        .menu-card {
-            background: var(--card);
-            border-radius: var(--radius);
-            padding: 36px 28px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: var(--shadow);
-            border: 1px solid transparent;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-            text-decoration: none;
-            color: inherit;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .menu-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: transparent;
-            transition: background 0.3s;
-        }
-
-        .menu-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .menu-card.primary:hover::before { background: var(--primary); }
-        .menu-card.secondary:hover::before { background: var(--accent); }
-        .menu-card.process:hover::before { background: var(--orange); }
-
-        .menu-card .icon-wrap {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            transition: transform 0.3s;
-        }
-
-        .menu-card:hover .icon-wrap {
-            transform: scale(1.08);
-        }
-
-        .menu-card.primary .icon-wrap {
-            background: #e3f2fd;
-            color: var(--primary);
-        }
-
-        .menu-card.secondary .icon-wrap {
-            background: var(--accent-light);
-            color: var(--accent);
-        }
-
-        .menu-card.process .icon-wrap {
-            background: #fff3e0;
-            color: var(--orange);
-        }
-
-        .menu-card h3 {
-            font-size: 19px;
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .menu-card p {
-            font-size: 14.5px;
-            color: var(--text-secondary);
-            line-height: 1.55;
-            max-width: 300px;
-        }
-
-        /* ========== BACK BUTTON ========== */
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: white;
-            border: 1px solid var(--border);
-            color: #444;
-            padding: 10px 18px;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            margin-bottom: 28px;
-            transition: all 0.2s;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-        }
-
-        .back-btn:hover {
-            background: #f8fafc;
-            border-color: #94a3b8;
-            color: var(--primary);
-        }
-
-        /* ========== SECTION HEADER ========== */
-        .section-header {
-            margin-bottom: 32px;
-        }
-
-        .section-header h2 {
-            font-size: 26px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            letter-spacing: -0.3px;
-        }
-
-        .section-header p {
-            font-size: 15.5px;
-            color: var(--text-secondary);
-        }
-
-        /* ========== TIMELINE ========== */
-        .timeline {
-            position: relative;
-            padding-left: 32px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 9px;
-            top: 12px;
-            bottom: 12px;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--primary), var(--accent));
-            border-radius: 3px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 18px;
-            background: white;
-            border-radius: 14px;
-            padding: 18px 20px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            transition: transform 0.2s;
-        }
-
-        .timeline-item:hover {
-            transform: translateX(4px);
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -30px;
-            top: 22px;
-            width: 15px;
-            height: 15px;
-            background: var(--primary);
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 0 0 2px var(--primary);
-        }
-
-        .timeline-item:nth-child(even)::before {
-            background: var(--accent);
-            box-shadow: 0 0 0 2px var(--accent);
-        }
-
-        .timeline-year {
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 15px;
-            margin-bottom: 4px;
-        }
-
-        .timeline-desc {
-            font-size: 14.5px;
-            color: #444;
-            line-height: 1.5;
-        }
-
-        /* ========== PROCESS ========== */
-        .process-intro {
-            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
-            border-radius: 14px;
-            padding: 18px 20px;
-            margin-bottom: 32px;
-            border-left: 5px solid var(--accent);
-            font-size: 15px;
-            color: #1b5e20;
-            line-height: 1.6;
-        }
-
-        .process-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .step-card {
-            background: white;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        @media (min-width: 700px) {
-            .step-card {
-                flex-direction: row;
-                align-items: stretch;
-            }
-        }
-
-        .step-card:hover {
-            box-shadow: var(--shadow-hover);
-            border-color: #c8e6c9;
-        }
-
-        .step-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background: #e2e8f0;
-            flex-shrink: 0;
-        }
-
-        @media (min-width: 700px) {
-            .step-img {
-                width: 280px;
-                height: auto;
-                min-height: 200px;
-            }
-        }
-
-        .step-body {
-            padding: 22px 24px;
-            display: flex;
-            gap: 16px;
-            align-items: flex-start;
-            flex: 1;
-        }
-
-        .step-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: var(--accent-light);
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 24px;
-        }
-
-        .step-text h4 {
-            font-size: 17px;
-            font-weight: 600;
-            color: #1b5e20;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .step-num {
-            background: var(--accent);
-            color: white;
-            font-size: 12px;
-            font-weight: 700;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .step-text p {
-            font-size: 14.5px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .process-footer {
-            margin-top: 40px;
-            text-align: center;
-            padding: 18px 24px;
-            background: var(--primary);
-            color: white;
-            border-radius: 14px;
-            font-size: 15px;
-            font-weight: 500;
-            letter-spacing: 0.2px;
-        }
-    </style>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -459,24 +25,31 @@
             <div class="logo-mark">R</div>
             <div class="logo-text">ROMEX <span>S.A.</span></div>
         </a>
+        <nav class="nav-desktop">
+            <button class="nav-link" onclick="showView('view-home')">Inicio</button>
+            <button class="nav-link" onclick="showView('view-timeline')">Línea de Tiempo</button>
+            <button class="nav-link" onclick="showView('view-process')">Proceso</button>
+        </nav>
     </header>
 
-    <div class="container">
+    <main class="container">
 
         <!-- ========== HOME ========== -->
-        <div id="view-home" class="view active">
+        <section id="view-home" class="view active">
             <div class="hero">
-                <h1>Exportadora Romex</h1>
+                <div class="hero-badge">Exportadora Romex</div>
+                <h1>Del grano a la excelencia</h1>
                 <p>Explora la historia y el proceso industrial del cacao peruano de alta calidad</p>
             </div>
 
             <div class="menu-grid">
-                <a href="https://romex.pe/es/nosotros/" target="_blank" class="menu-card primary">
+                <a href="https://romex.pe/es/nosotros/" target="_blank" rel="noopener" class="menu-card primary">
                     <div class="icon-wrap">
                         <span class="material-icons">business</span>
                     </div>
                     <h3>Conoce Nosotros</h3>
                     <p>Visita el sitio oficial y conoce la historia, valores y operaciones de Romex.</p>
+                    <span class="card-link">Ir al sitio →</span>
                 </a>
 
                 <div class="menu-card secondary" onclick="showView('view-timeline')">
@@ -485,6 +58,7 @@
                     </div>
                     <h3>Línea de Tiempo</h3>
                     <p>Recorre los hitos más importantes de la empresa desde 1957 hasta la actualidad.</p>
+                    <span class="card-link">Explorar →</span>
                 </div>
 
                 <div class="menu-card process full" onclick="showView('view-process')">
@@ -493,67 +67,33 @@
                     </div>
                     <h3>Transformación del Grano</h3>
                     <p>Descubre el proceso completo: desde la recepción del cacao hasta el almacenado y despacho final.</p>
+                    <span class="card-link">Ver proceso →</span>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- ========== LÍNEA DE TIEMPO ========== -->
-        <div id="view-timeline" class="view">
+        <section id="view-timeline" class="view">
             <button class="back-btn" onclick="showView('view-home')">
-                <span class="material-icons" style="font-size:18px;">arrow_back</span>
-                Volver
+                <span class="material-icons">arrow_back</span>
+                Volver al inicio
             </button>
 
             <div class="section-header">
                 <h2><span class="material-icons">timeline</span> Línea de Tiempo</h2>
-                <p>Principales hitos de Exportadora Romex S.A.</p>
+                <p>Principales hitos de Exportadora Romex S.A. en café y cacao</p>
             </div>
 
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-year">1957</div>
-                    <div class="timeline-desc">Nace Cafetal, la marca estrella de café tostado molido peruano.</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">1980</div>
-                    <div class="timeline-desc">Fundación de Selva Industria. Inicio de la recolección de café verde y algodón.</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">1997</div>
-                    <div class="timeline-desc">Fusión que da origen a Romero Trading. Expansión en café, algodón y soya.</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2002</div>
-                    <div class="timeline-desc">Compra de planta en Chincha (Ica). Se inaugura la división de cacao.</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2009</div>
-                    <div class="timeline-desc">Se constituye Exportadora Romex S.A. Hereda la exportación de café y cacao.</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2010</div>
-                    <div class="timeline-desc">Adquisición de terreno en Cajamarquilla (Lima) para futuras expansiones.</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2012</div>
-                    <div class="timeline-desc">Nace Cafetal Gourmet y se establece la Hacienda San Jacinto (sistema agroforestal de cacao).</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2016 – 2021</div>
-                    <div class="timeline-desc">Lanzamiento de 338 (café premium), Innato (chocolates gourmet) y Coberturas Romex.</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2023 – 2024</div>
-                    <div class="timeline-desc">Nueva planta de chocolate en Cajamarquilla. Aumento de capacidad: +50% café y +30% cacao.</div>
-                </div>
+            <div class="timeline" id="timeline-container">
+                <!-- Se llena dinámicamente con JS -->
             </div>
-        </div>
+        </section>
 
         <!-- ========== TRANSFORMACIÓN DEL GRANO ========== -->
-        <div id="view-process" class="view">
+        <section id="view-process" class="view">
             <button class="back-btn" onclick="showView('view-home')">
-                <span class="material-icons" style="font-size:18px;">arrow_back</span>
-                Volver
+                <span class="material-icons">arrow_back</span>
+                Volver al inicio
             </button>
 
             <div class="section-header">
@@ -562,139 +102,41 @@
             </div>
 
             <div class="process-intro">
-                Romex trabaja con trazabilidad completa. Los granos llegan desde 12 centros de acopio ubicados en las principales zonas cacaoteras del Perú. Cada lote es controlado en calidad, origen y humedad.
+                <span class="material-icons">info</span>
+                <div>
+                    Romex trabaja con <strong>trazabilidad completa</strong>. Los granos llegan desde 12 centros de acopio ubicados en las principales zonas cacaoteras del Perú. Cada lote es controlado en calidad, origen y humedad.
+                </div>
             </div>
 
-            <div class="process-steps">
-
-                <!-- 1 -->
-                <div class="step-card">
-                    <img class="step-img" 
-                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Sao_Tome_Monteforte_Sorting_Cocoa_Beans_2_%2816062798779%29.jpg/800px-Sao_Tome_Monteforte_Sorting_Cocoa_Beans_2_%2816062798779%29.jpg" 
-                         alt="Recepción de granos de cacao"
-                         loading="lazy"
-                         onerror="this.style.display='none'">
-                    <div class="step-body">
-                        <div class="step-icon"><span class="material-icons">local_shipping</span></div>
-                        <div class="step-text">
-                            <h4><span class="step-num">1</span> Recepción de Materia Prima</h4>
-                            <p>Los granos llegan a planta desde los centros de acopio. Se registra origen, peso, humedad y se asigna un código de trazabilidad único para todo el lote.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2 -->
-                <div class="step-card">
-                    <img class="step-img" 
-                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Cocoa_farmers_during_harvest.jpg/800px-Cocoa_farmers_during_harvest.jpg" 
-                         alt="Selección y limpieza"
-                         loading="lazy"
-                         onerror="this.style.display='none'">
-                    <div class="step-body">
-                        <div class="step-icon"><span class="material-icons">filter_alt</span></div>
-                        <div class="step-text">
-                            <h4><span class="step-num">2</span> Selección y Limpieza</h4>
-                            <p>Se eliminan impurezas (piedras, hojas, granos defectuosos). Clasificación por tamaño, densidad y calidad visual.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3 -->
-                <div class="step-card">
-                    <img class="step-img" 
-                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Roast_cocoa_beans_ready_to_pounded_into_a_paste_for_the_Samoan_koko_drink..JPG/800px-Roast_cocoa_beans_ready_to_pounded_into_a_paste_for_the_Samoan_koko_drink..JPG" 
-                         alt="Secado de granos"
-                         loading="lazy"
-                         onerror="this.style.display='none'">
-                    <div class="step-body">
-                        <div class="step-icon"><span class="material-icons">water_drop</span></div>
-                        <div class="step-text">
-                            <h4><span class="step-num">3</span> Secado y Control de Humedad</h4>
-                            <p>Se ajusta la humedad del grano a niveles óptimos (aprox. 6.5% – 7.5%) para garantizar conservación y calidad posterior.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4 -->
-                <div class="step-card">
-                    <img class="step-img" 
-                         src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=900&q=80" 
-                         alt="Tostado de cacao"
-                         loading="lazy"
-                         onerror="this.style.display='none'">
-                    <div class="step-body">
-                        <div class="step-icon"><span class="material-icons">whatshot</span></div>
-                        <div class="step-text">
-                            <h4><span class="step-num">4</span> Tostado</h4>
-                            <p>El grano se tuesta a temperatura controlada. Se desarrollan aromas y sabores característicos del cacao peruano y se facilita el descascarillado.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 5 -->
-                <div class="step-card">
-                    <img class="step-img" 
-                         src="https://images.unsplash.com/photo-1511381939415-e44015466834?w=900&q=80" 
-                         alt="Nibs de cacao"
-                         loading="lazy"
-                         onerror="this.style.display='none'">
-                    <div class="step-body">
-                        <div class="step-icon"><span class="material-icons">grain</span></div>
-                        <div class="step-text">
-                            <h4><span class="step-num">5</span> Descascarillado → Nibs</h4>
-                            <p>Se rompe el grano y se separa la cáscara. Se obtienen los <strong>nibs de cacao</strong>, base para licor, manteca, polvo y chocolate.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 6 -->
-                <div class="step-card">
-                    <img class="step-img" 
-                         src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=900&q=80" 
-                         alt="Control de calidad"
-                         loading="lazy"
-                         onerror="this.style.display='none'">
-                    <div class="step-body">
-                        <div class="step-icon"><span class="material-icons">science</span></div>
-                        <div class="step-text">
-                            <h4><span class="step-num">6</span> Control de Calidad</h4>
-                            <p>Análisis físico-químicos, sensoriales y de inocuidad. Solo los lotes que cumplen especificaciones y certificaciones son liberados.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 7 -->
-                <div class="step-card">
-                    <img class="step-img" 
-                         src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=900&q=80" 
-                         alt="Almacenado y despacho"
-                         loading="lazy"
-                         onerror="this.style.display='none'">
-                    <div class="step-body">
-                        <div class="step-icon"><span class="material-icons">inventory_2</span></div>
-                        <div class="step-text">
-                            <h4><span class="step-num">7</span> Almacenado y Despacho</h4>
-                            <p>Los productos se almacenan en condiciones controladas. Luego se preparan para despacho nacional o exportación con documentación completa de trazabilidad.</p>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="process-steps" id="process-container">
+                <!-- Se llena dinámicamente con JS -->
             </div>
 
             <div class="process-footer">
+                <span class="material-icons">verified</span>
                 Trazabilidad completa • Desde el productor hasta el cliente final
             </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <strong>ROMEX S.A.</strong>
+                <span>Exportadora de Café y Cacao del Perú</span>
+            </div>
+            <div class="footer-links">
+                <a href="https://romex.pe" target="_blank" rel="noopener">Sitio oficial</a>
+                <a href="https://github.com/rframosyataco8-ux/romex-senati-cacao" target="_blank" rel="noopener">Código fuente</a>
+            </div>
+            <p class="footer-copy">Proyecto educativo • Alianza SENATI</p>
         </div>
+    </footer>
 
-    </div>
-
-    <script>
-        function showView(viewId) {
-            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-            document.getElementById(viewId).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
-
+    <!-- JS -->
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
