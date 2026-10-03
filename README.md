@@ -13,7 +13,7 @@ Interfaz web profesional e interactiva que presenta la historia y el proceso ind
 - **Transformación del Grano** → Proceso industrial completo del cacao (7 etapas)
 - Diseño responsive y profesional
 - Código modular (HTML + CSS + JavaScript)
-- Datos separados en archivos JS para fácil mantenimiento
+- Imágenes locales (carpeta `assets/images/`)
 
 ---
 
@@ -21,50 +21,72 @@ Interfaz web profesional e interactiva que presenta la historia y el proceso ind
 
 ```
 romex-senati-cacao/
-├── index.html          # Página principal
+├── index.html
 ├── css/
-│   └── styles.css      # Estilos completos
+│   └── styles.css
 ├── js/
-│   ├── data.js         # Datos (timeline + proceso)
-│   └── main.js         # Lógica de la aplicación
+│   ├── data.js          ← Datos + rutas de imágenes
+│   └── main.js
+├── assets/
+│   └── images/          ← AQUÍ VAN TUS IMÁGENES
+│       ├── 01-recepcion.jpg
+│       ├── 02-seleccion.jpg
+│       ├── 03-secado.jpg
+│       ├── 04-tostado.jpg
+│       ├── 05-nibs.jpg
+│       ├── 06-calidad.jpg
+│       └── 07-almacen.jpg
 └── README.md
 ```
 
 ---
 
+## 🖼 Cómo agregar tus imágenes
+
+1. Coloca tus fotos en la carpeta:
+   ```
+   assets/images/
+   ```
+
+2. Nómbralas exactamente así:
+
+| Nombre del archivo     | Paso                        |
+|------------------------|-----------------------------|
+| `01-recepcion.jpg`     | Recepción de Materia Prima  |
+| `02-seleccion.jpg`     | Selección y Limpieza        |
+| `03-secado.jpg`        | Secado y Control de Humedad |
+| `04-tostado.jpg`       | Tostado                     |
+| `05-nibs.jpg`          | Descascarillado → Nibs      |
+| `06-calidad.jpg`       | Control de Calidad          |
+| `07-almacen.jpg`       | Almacenado y Despacho       |
+
+3. Si usas otra extensión (`.png`, `.webp`), edita las rutas en el archivo `js/data.js`.
+
+---
+
 ## 🚀 Cómo ver el proyecto
 
-### Opción 1: Local
-1. Clona el repositorio
-2. Abre `index.html` en tu navegador
+### Local
+```bash
+git clone https://github.com/rframosyataco8-ux/romex-senati-cacao.git
+cd romex-senati-cacao
+# Abre index.html en el navegador
+```
 
-### Opción 2: GitHub Pages
-1. Ve a **Settings → Pages**
-2. Source: Deploy from a branch → `main` → `/ (root)`
-3. Guarda
-
-Luego estará disponible en:  
-**https://rframosyataco8-ux.github.io/romex-senati-cacao/**
+### GitHub Pages
+1. Settings → Pages
+2. Source: `main` branch → `/ (root)`
+3. El sitio estará en:  
+   **https://rframosyataco8-ux.github.io/romex-senati-cacao/**
 
 ---
 
 ## 🛠 Tecnologías
 
 - HTML5 semántico
-- CSS3 moderno (variables CSS, Flexbox, Grid, animaciones)
-- JavaScript vanilla (sin frameworks)
-- Google Fonts (Inter)
-- Material Icons
-- Imágenes de Wikimedia Commons y Unsplash
-
----
-
-## 📌 Próximas mejoras posibles
-
-- Integrar imágenes propias desde Google Drive / OneDrive
-- Modo oscuro
-- Versión imprimible del proceso
-- Animaciones más avanzadas entre pasos
+- CSS3 moderno (variables CSS, Flexbox, Grid)
+- JavaScript vanilla
+- Google Fonts (Inter) + Material Icons
 
 ---
 
