@@ -385,7 +385,7 @@ body {
     line-height: 1.5;
 }
 
-/* ========== PROCESS ========== */
+/* ========== PROCESS (sin imágenes) ========== */
 .process-intro {
     background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
     border-radius: 14px;
@@ -410,7 +410,7 @@ body {
 .process-steps {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
 }
 
 .step-card {
@@ -420,44 +420,19 @@ body {
     box-shadow: var(--shadow);
     border: 1px solid var(--border);
     transition: var(--transition);
-    display: flex;
-    flex-direction: column;
-}
-
-@media (min-width: 700px) {
-    .step-card {
-        flex-direction: row;
-        align-items: stretch;
-    }
 }
 
 .step-card:hover {
     box-shadow: var(--shadow-hover);
     border-color: #c8e6c9;
+    transform: translateX(4px);
 }
 
-.step-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    background: #e2e8f0;
-    flex-shrink: 0;
-}
-
-@media (min-width: 700px) {
-    .step-img {
-        width: 280px;
-        height: auto;
-        min-height: 200px;
-    }
-}
-
-.step-body {
-    padding: 22px 24px;
+.step-card.no-image .step-body {
+    padding: 20px 22px;
     display: flex;
     gap: 16px;
     align-items: flex-start;
-    flex: 1;
 }
 
 .step-icon {
@@ -474,10 +449,10 @@ body {
 }
 
 .step-text h4 {
-    font-size: 17px;
+    font-size: 16.5px;
     font-weight: 600;
     color: #1b5e20;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -499,11 +474,11 @@ body {
 .step-text p {
     font-size: 14.5px;
     color: var(--text-secondary);
-    line-height: 1.6;
+    line-height: 1.55;
 }
 
 .process-footer {
-    margin-top: 40px;
+    margin-top: 36px;
     text-align: center;
     padding: 18px 24px;
     background: var(--primary);

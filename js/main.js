@@ -25,18 +25,13 @@ function renderTimeline() {
     `).join('');
 }
 
-// ========== RENDERIZAR PROCESO ==========
+// ========== RENDERIZAR PROCESO (sin imágenes) ==========
 function renderProcess() {
     const container = document.getElementById('process-container');
     if (!container || typeof processData === 'undefined') return;
 
     container.innerHTML = processData.map(step => `
-        <div class="step-card">
-            <img class="step-img" 
-                 src="${step.image}" 
-                 alt="${step.alt}"
-                 loading="lazy"
-                 onerror="this.style.display='none'">
+        <div class="step-card no-image">
             <div class="step-body">
                 <div class="step-icon">
                     <span class="material-icons">${step.icon}</span>
@@ -61,11 +56,9 @@ function initCookieConsent() {
 
     if (!banner) return;
 
-    // Verificar si ya eligió antes
     const consent = localStorage.getItem('romex_cookie_consent');
 
     if (!consent) {
-        // Mostrar banner después de un pequeño delay
         setTimeout(() => {
             banner.classList.add('show');
         }, 800);
@@ -74,14 +67,11 @@ function initCookieConsent() {
     acceptBtn.addEventListener('click', () => {
         localStorage.setItem('romex_cookie_consent', 'accepted');
         banner.classList.remove('show');
-        // Aquí se pueden activar scripts de análisis en el futuro
-        console.log('Cookies aceptadas');
     });
 
     rejectBtn.addEventListener('click', () => {
         localStorage.setItem('romex_cookie_consent', 'rejected');
         banner.classList.remove('show');
-        console.log('Cookies rechazadas');
     });
 }
 
@@ -91,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProcess();
     initCookieConsent();
 
-    // Atajo de teclado: Escape vuelve al inicio
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             showView('view-home');
