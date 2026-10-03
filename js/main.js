@@ -1,17 +1,14 @@
 // ========== NAVEGACIÓN DE VISTAS ==========
 function showView(viewId) {
-    // Ocultar todas las vistas
     document.querySelectorAll('.view').forEach(view => {
         view.classList.remove('active');
     });
 
-    // Mostrar la vista seleccionada
     const target = document.getElementById(viewId);
     if (target) {
         target.classList.add('active');
     }
 
-    // Scroll suave al inicio
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -56,10 +53,43 @@ function renderProcess() {
     `).join('');
 }
 
+// ========== COOKIE CONSENT ==========
+function initCookieConsent() {
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('cookie-accept');
+    const rejectBtn = document.getElementById('cookie-reject');
+
+    if (!banner) return;
+
+    // Verificar si ya eligió antes
+    const consent = localStorage.getItem('romex_cookie_consent');
+
+    if (!consent) {
+        // Mostrar banner después de un pequeño delay
+        setTimeout(() => {
+            banner.classList.add('show');
+        }, 800);
+    }
+
+    acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('romex_cookie_consent', 'accepted');
+        banner.classList.remove('show');
+        // Aquí se pueden activar scripts de análisis en el futuro
+        console.log('Cookies aceptadas');
+    });
+
+    rejectBtn.addEventListener('click', () => {
+        localStorage.setItem('romex_cookie_consent', 'rejected');
+        banner.classList.remove('show');
+        console.log('Cookies rechazadas');
+    });
+}
+
 // ========== INICIALIZACIÓN ==========
 document.addEventListener('DOMContentLoaded', () => {
     renderTimeline();
     renderProcess();
+    initCookieConsent();
 
     // Atajo de teclado: Escape vuelve al inicio
     document.addEventListener('keydown', (e) => {
