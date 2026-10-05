@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Exportadora Romex S.A. - Interfaz educativa sobre la transformación del grano de cacao y línea de tiempo empresarial">
-    <meta name="author" content="Proyecto Alianza SENATI - Romex">
+    <meta name="description" content="Exportadora Romex S.A. - Interfaz educativa sobre cacao y línea de tiempo">
     <meta name="theme-color" content="#0d47a1">
-    <title>Exportadora Romex S.A. | Transformación del Cacao</title>
+    <title>Exportadora Romex S.A.</title>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍫</text></svg>">
-    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
@@ -21,94 +19,93 @@
             <div class="logo-mark">R</div>
             <div class="logo-text">ROMEX <span>S.A.</span></div>
         </a>
-        <nav class="nav-desktop">
-            <button class="nav-link" onclick="showView('view-home')">Inicio</button>
-            <button class="nav-link" onclick="showView('view-timeline')">Línea de Tiempo</button>
-            <button class="nav-link" onclick="showView('view-process')">Proceso</button>
-        </nav>
     </header>
 
     <main class="container">
 
-        <!-- HOME -->
+        <!-- ========== HOME ========== -->
         <section id="view-home" class="view active">
             <div class="hero">
-                <div class="hero-badge">Exportadora Romex</div>
-                <h1>Del grano a la excelencia</h1>
-                <p>Explora la historia y el proceso industrial del cacao peruano de alta calidad</p>
+                <h1>Exportadora Romex</h1>
+                <p>Selecciona una opción para continuar</p>
             </div>
 
-            <div class="menu-grid">
-                <a href="https://romex.pe/es/nosotros/" target="_blank" rel="noopener" class="menu-card primary">
-                    <div class="icon-wrap">
+            <div class="cards-row">
+                <!-- 1. Conoce Nosotros -->
+                <a href="https://romex.pe/es/nosotros/" target="_blank" rel="noopener" class="card">
+                    <div class="card-icon blue">
                         <span class="material-icons">business</span>
                     </div>
                     <h3>Conoce Nosotros</h3>
-                    <p>Visita el sitio oficial y conoce la historia, valores y operaciones de Romex.</p>
-                    <span class="card-link">Ir al sitio →</span>
+                    <p>Sitio oficial de Romex</p>
                 </a>
 
-                <div class="menu-card secondary" onclick="showView('view-timeline')">
-                    <div class="icon-wrap">
+                <!-- 2. Línea de Tiempo -->
+                <div class="card" onclick="showView('view-timeline')">
+                    <div class="card-icon green">
                         <span class="material-icons">timeline</span>
                     </div>
                     <h3>Línea de Tiempo</h3>
-                    <p>Recorre los hitos más importantes de la empresa desde 1957 hasta la actualidad.</p>
-                    <span class="card-link">Explorar →</span>
+                    <p>Historia de la empresa</p>
                 </div>
 
-                <div class="menu-card process full" onclick="showView('view-process')">
-                    <div class="icon-wrap">
+                <!-- 3. Transformación del Grano -->
+                <div class="card" onclick="showView('view-process')">
+                    <div class="card-icon orange">
                         <span class="material-icons">agriculture</span>
                     </div>
-                    <h3>Transformación del Grano</h3>
-                    <p>Descubre el proceso completo: desde la recepción del cacao hasta el almacenado y despacho final.</p>
-                    <span class="card-link">Ver proceso →</span>
+                    <h3>Transformación</h3>
+                    <p>Proceso del cacao</p>
+                </div>
+
+                <!-- 4. Video -->
+                <div class="card" onclick="showView('view-video')">
+                    <div class="card-icon purple">
+                        <span class="material-icons">play_circle</span>
+                    </div>
+                    <h3>Video</h3>
+                    <p>Contenido audiovisual</p>
                 </div>
             </div>
         </section>
 
-        <!-- TIMELINE -->
+        <!-- ========== LÍNEA DE TIEMPO ========== -->
         <section id="view-timeline" class="view">
             <button class="back-btn" onclick="showView('view-home')">
                 <span class="material-icons">arrow_back</span>
-                Volver al inicio
+                Volver
             </button>
 
             <div class="section-header">
-                <h2><span class="material-icons">timeline</span> Línea de Tiempo</h2>
-                <p>Principales hitos de Exportadora Romex S.A. en café y cacao</p>
+                <h2>Línea de Tiempo</h2>
+                <p>Hitos principales de Exportadora Romex S.A.</p>
             </div>
 
             <div class="timeline" id="timeline-container"></div>
         </section>
 
-        <!-- PROCESS -->
+        <!-- ========== PROCESO ========== -->
         <section id="view-process" class="view">
             <button class="back-btn" onclick="showView('view-home')">
                 <span class="material-icons">arrow_back</span>
-                Volver al inicio
+                Volver
             </button>
 
             <div class="section-header">
-                <h2><span class="material-icons">agriculture</span> Transformación del Grano</h2>
-                <p>Proceso industrial del cacao desde la recepción hasta el despacho</p>
+                <h2>Transformación del Grano</h2>
+                <p>Proceso industrial del cacao</p>
             </div>
 
             <div class="process-intro">
-                <span class="material-icons">info</span>
-                <div>
-                    Romex trabaja con <strong>trazabilidad completa</strong>. Los granos llegan desde 12 centros de acopio ubicados en las principales zonas cacaoteras del Perú. Cada lote es controlado en calidad, origen y humedad.
-                </div>
+                Romex trabaja con trazabilidad completa. Los granos llegan desde 12 centros de acopio en las principales zonas cacaoteras del Perú.
             </div>
 
-            <!-- Progress indicator -->
             <div class="process-progress">
                 <div class="progress-bar">
                     <div class="progress-fill" id="progress-fill"></div>
                 </div>
                 <div class="progress-text">
-                    <span id="progress-current">1</span> / <span id="progress-total">7</span> etapas
+                    Etapa <span id="progress-current">1</span> de <span id="progress-total">7</span>
                 </div>
             </div>
 
@@ -122,10 +119,42 @@
                     Siguiente <span class="material-icons">arrow_forward</span>
                 </button>
             </div>
+        </section>
 
-            <div class="process-footer">
-                <span class="material-icons">verified</span>
-                Trazabilidad completa • Desde el productor hasta el cliente final
+        <!-- ========== VIDEO ========== -->
+        <section id="view-video" class="view">
+            <button class="back-btn" onclick="showView('view-home')">
+                <span class="material-icons">arrow_back</span>
+                Volver
+            </button>
+
+            <div class="section-header">
+                <h2>Video</h2>
+                <p>Contenido audiovisual de Romex</p>
+            </div>
+
+            <div class="video-wrapper">
+                <!-- 
+                    INSTRUCCIONES PARA COLOCAR TU VIDEO DE GOOGLE DRIVE:
+                    1. Sube el video a Google Drive
+                    2. Clic derecho → Compartir → "Cualquier persona con el enlace"
+                    3. Copia el ID del archivo (la parte larga entre /d/ y /view)
+                    4. Reemplaza VIDEO_ID_AQUI abajo por ese ID
+                -->
+                <div class="video-container">
+                    <iframe 
+                        id="drive-video"
+                        src="https://drive.google.com/file/d/VIDEO_ID_AQUI/preview" 
+                        allow="autoplay" 
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                </div>
+
+                <div class="video-note">
+                    <span class="material-icons">info</span>
+                    <p>Para activar el video, coloca el ID de tu archivo de Google Drive en el código (ver README).</p>
+                </div>
             </div>
         </section>
 
@@ -133,15 +162,9 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-brand">
-                <strong>ROMEX S.A.</strong>
-                <span>Exportadora de Café y Cacao del Perú</span>
-            </div>
-            <div class="footer-links">
-                <a href="https://romex.pe" target="_blank" rel="noopener">Sitio oficial</a>
-                <a href="https://github.com/rframosyataco8-ux/romex-senati-cacao" target="_blank" rel="noopener">Código fuente</a>
-            </div>
-            <p class="footer-copy">Proyecto educativo • Alianza SENATI</p>
+            <strong>ROMEX S.A.</strong>
+            <span>Exportadora de Café y Cacao del Perú</span>
+            <p>Proyecto educativo • Alianza SENATI</p>
         </div>
     </footer>
 
@@ -152,7 +175,7 @@
                 <span class="material-icons cookie-icon">cookie</span>
                 <div>
                     <strong>Usamos cookies</strong>
-                    <p>Este sitio utiliza cookies esenciales para mejorar tu experiencia. Al continuar navegando, aceptas su uso.</p>
+                    <p>Este sitio utiliza cookies esenciales para mejorar tu experiencia.</p>
                 </div>
             </div>
             <div class="cookie-actions">
@@ -162,7 +185,6 @@
         </div>
     </div>
 
-    <!-- Scroll to top -->
     <button id="scroll-top" class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
         <span class="material-icons">keyboard_arrow_up</span>
     </button>
