@@ -5,21 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Exportadora Romex S.A. - Interfaz educativa sobre la transformación del grano de cacao y línea de tiempo empresarial">
     <meta name="author" content="Proyecto Alianza SENATI - Romex">
+    <meta name="theme-color" content="#0d47a1">
     <title>Exportadora Romex S.A. | Transformación del Cacao</title>
     
-    <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍫</text></svg>">
     
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
-    <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <!-- HEADER -->
     <header class="header">
         <a href="#" class="logo" onclick="showView('view-home'); return false;">
             <div class="logo-mark">R</div>
@@ -34,7 +30,7 @@
 
     <main class="container">
 
-        <!-- ========== HOME ========== -->
+        <!-- HOME -->
         <section id="view-home" class="view active">
             <div class="hero">
                 <div class="hero-badge">Exportadora Romex</div>
@@ -72,7 +68,7 @@
             </div>
         </section>
 
-        <!-- ========== LÍNEA DE TIEMPO ========== -->
+        <!-- TIMELINE -->
         <section id="view-timeline" class="view">
             <button class="back-btn" onclick="showView('view-home')">
                 <span class="material-icons">arrow_back</span>
@@ -84,12 +80,10 @@
                 <p>Principales hitos de Exportadora Romex S.A. en café y cacao</p>
             </div>
 
-            <div class="timeline" id="timeline-container">
-                <!-- Se llena dinámicamente con JS -->
-            </div>
+            <div class="timeline" id="timeline-container"></div>
         </section>
 
-        <!-- ========== TRANSFORMACIÓN DEL GRANO ========== -->
+        <!-- PROCESS -->
         <section id="view-process" class="view">
             <button class="back-btn" onclick="showView('view-home')">
                 <span class="material-icons">arrow_back</span>
@@ -108,8 +102,25 @@
                 </div>
             </div>
 
-            <div class="process-steps" id="process-container">
-                <!-- Se llena dinámicamente con JS -->
+            <!-- Progress indicator -->
+            <div class="process-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="progress-current">1</span> / <span id="progress-total">7</span> etapas
+                </div>
+            </div>
+
+            <div class="process-steps" id="process-container"></div>
+
+            <div class="process-nav">
+                <button class="btn-nav" id="btn-prev" onclick="changeStep(-1)" disabled>
+                    <span class="material-icons">arrow_back</span> Anterior
+                </button>
+                <button class="btn-nav primary" id="btn-next" onclick="changeStep(1)">
+                    Siguiente <span class="material-icons">arrow_forward</span>
+                </button>
             </div>
 
             <div class="process-footer">
@@ -120,7 +131,6 @@
 
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-brand">
@@ -135,14 +145,14 @@
         </div>
     </footer>
 
-    <!-- ========== COOKIE CONSENT BANNER ========== -->
+    <!-- Cookie Banner -->
     <div id="cookie-banner" class="cookie-banner">
         <div class="cookie-content">
             <div class="cookie-text">
                 <span class="material-icons cookie-icon">cookie</span>
                 <div>
                     <strong>Usamos cookies</strong>
-                    <p>Este sitio utiliza cookies esenciales y de análisis para mejorar tu experiencia. Al continuar navegando, aceptas su uso.</p>
+                    <p>Este sitio utiliza cookies esenciales para mejorar tu experiencia. Al continuar navegando, aceptas su uso.</p>
                 </div>
             </div>
             <div class="cookie-actions">
@@ -152,7 +162,11 @@
         </div>
     </div>
 
-    <!-- JS -->
+    <!-- Scroll to top -->
+    <button id="scroll-top" class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <span class="material-icons">keyboard_arrow_up</span>
+    </button>
+
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
 </body>

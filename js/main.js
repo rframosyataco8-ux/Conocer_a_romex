@@ -1,3 +1,6 @@
+// ========== STATE ==========
+let currentStep = 0;
+
 // ========== NAVEGACIÓN DE VISTAS ==========
 function showView(viewId) {
     document.querySelectorAll('.view').forEach(view => {
@@ -9,10 +12,16 @@ function showView(viewId) {
         target.classList.add('active');
     }
 
+    // Reset process step when entering process view
+    if (viewId === 'view-process') {
+        currentStep = 0;
+        updateProcessUI();
+    }
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ========== RENDERIZAR LÍNEA DE TIEMPO ==========
+// ========== RENDER TIMELINE ==========
 function renderTimeline() {
     const container = document.getElementById('timeline-container');
     if (!container || typeof timelineData === 'undefined') return;
@@ -25,13 +34,13 @@ function renderTimeline() {
     `).join('');
 }
 
-// ========== RENDERIZAR PROCESO (sin imágenes) ==========
+// ========== RENDER PROCESS ==========
 function renderProcess() {
     const container = document.getElementById('process-container');
     if (!container || typeof processData === 'undefined') return;
 
-    container.innerHTML = processData.map(step => `
-        <div class="step-card no-image">
+    container.innerHTML = processData.map((step, index) => `
+        <div class="step-card ${index === 0 ? 'active' : ''}" data-step="${index}">
             <div class="step-body">
                 <div class="step-icon">
                     <span class="material-icons">${step.icon}</span>
@@ -46,6 +55,42 @@ function renderProcess() {
             </div>
         </div>
     `).join('');
+
+    document.getElementById('progress-total').textContent = processData.length;
+    updateProcessUI();
+}
+
+// ========== PROCESS NAVIGATION ==========
+function changeStep(direction) {
+    const total = processData.length;
+    currentStep = Math.max(0, Math.min(total - 1, currentStep + direction));
+    updateProcessUI();
+}
+
+function updateProcessUI() {
+    const total = processData.length;
+
+    // Show only current step
+    document.querySelectorAll('.step-card').forEach((card, index) => {
+        card.classList.toggle('active', index === currentStep);
+    });
+
+    // Progress bar
+    const percent = ((currentStep + 1) / total) * 100;
+    document.getElementById('progress-fill').style.width = percent + '%';
+    document.getElementById('progress-current').textContent = currentStep + 1;
+
+    // Buttons state
+    document.getElementById('btn-prev').disabled = currentStep === 0;
+    document.getElementById('btn-next').disabled = currentStep === total - 1;
+
+    // Change next button text on last step
+    const nextBtn = document.getElementById('btn-next');
+    if (currentStep === total - 1) {
+        nextBtn.innerHTML = 'Finalizado <span class="material-icons">check</span>';
+    } else {
+        nextBtn.innerHTML = 'Siguiente <span class="material-icons">arrow_forward</span>';
+    }
 }
 
 // ========== COOKIE CONSENT ==========
@@ -61,7 +106,7 @@ function initCookieConsent() {
     if (!consent) {
         setTimeout(() => {
             banner.classList.add('show');
-        }, 800);
+        }, 900);
     }
 
     acceptBtn.addEventListener('click', () => {
@@ -75,15 +120,35 @@ function initCookieConsent() {
     });
 }
 
-// ========== INICIALIZACIÓN ==========
+// ========== SCROLL TO TOP ==========
+function initScrollTop() {
+    const btn = document.getElementById('scroll-top');
+    if (!btn) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+}
+
+// ========== INIT ==========
 document.addEventListener('DOMContentLoaded', () => {
     renderTimeline();
     renderProcess();
     initCookieConsent();
+    initScrollTop();
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             showView('view-home');
+        }
+        // Arrow keys for process navigation
+        if (document.getElementById('view-process').classList.contains('active')) {
+            if (e.key === 'ArrowRight') changeStep(1);
+            if (e.key === 'ArrowLeft') changeStep(-1);
         }
     });
 });
