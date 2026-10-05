@@ -107,11 +107,26 @@ function initScrollTop() {
     });
 }
 
+// Hide empty state if a real video ID is present
+function checkVideo() {
+    const iframe = document.getElementById('drive-video');
+    const empty = document.getElementById('video-empty');
+    if (!iframe || !empty) return;
+
+    const src = iframe.getAttribute('src') || '';
+    if (src.includes('VIDEO_ID_AQUI')) {
+        empty.style.display = 'flex';
+    } else {
+        empty.style.display = 'none';
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     renderTimeline();
     renderProcess();
     initCookieConsent();
     initScrollTop();
+    checkVideo();
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') showView('view-home');

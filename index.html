@@ -23,7 +23,7 @@
 
     <main class="container">
 
-        <!-- ========== HOME ========== -->
+        <!-- HOME -->
         <section id="view-home" class="view active">
             <div class="hero">
                 <h1>Exportadora Romex</h1>
@@ -31,7 +31,6 @@
             </div>
 
             <div class="cards-row">
-                <!-- 1. Conoce Nosotros -->
                 <a href="https://romex.pe/es/nosotros/" target="_blank" rel="noopener" class="card">
                     <div class="card-icon blue">
                         <span class="material-icons">business</span>
@@ -40,7 +39,6 @@
                     <p>Sitio oficial de Romex</p>
                 </a>
 
-                <!-- 2. Línea de Tiempo -->
                 <div class="card" onclick="showView('view-timeline')">
                     <div class="card-icon green">
                         <span class="material-icons">timeline</span>
@@ -49,7 +47,6 @@
                     <p>Historia de la empresa</p>
                 </div>
 
-                <!-- 3. Transformación del Grano -->
                 <div class="card" onclick="showView('view-process')">
                     <div class="card-icon orange">
                         <span class="material-icons">agriculture</span>
@@ -58,7 +55,6 @@
                     <p>Proceso del cacao</p>
                 </div>
 
-                <!-- 4. Video -->
                 <div class="card" onclick="showView('view-video')">
                     <div class="card-icon purple">
                         <span class="material-icons">play_circle</span>
@@ -69,7 +65,7 @@
             </div>
         </section>
 
-        <!-- ========== LÍNEA DE TIEMPO ========== -->
+        <!-- TIMELINE -->
         <section id="view-timeline" class="view">
             <button class="back-btn" onclick="showView('view-home')">
                 <span class="material-icons">arrow_back</span>
@@ -84,7 +80,7 @@
             <div class="timeline" id="timeline-container"></div>
         </section>
 
-        <!-- ========== PROCESO ========== -->
+        <!-- PROCESS -->
         <section id="view-process" class="view">
             <button class="back-btn" onclick="showView('view-home')">
                 <span class="material-icons">arrow_back</span>
@@ -121,7 +117,7 @@
             </div>
         </section>
 
-        <!-- ========== VIDEO ========== -->
+        <!-- VIDEO -->
         <section id="view-video" class="view">
             <button class="back-btn" onclick="showView('view-home')">
                 <span class="material-icons">arrow_back</span>
@@ -134,26 +130,46 @@
             </div>
 
             <div class="video-wrapper">
-                <!-- 
-                    INSTRUCCIONES PARA COLOCAR TU VIDEO DE GOOGLE DRIVE:
-                    1. Sube el video a Google Drive
-                    2. Clic derecho → Compartir → "Cualquier persona con el enlace"
-                    3. Copia el ID del archivo (la parte larga entre /d/ y /view)
-                    4. Reemplaza VIDEO_ID_AQUI abajo por ese ID
+                <!--
+                  ═══════════════════════════════════════════════
+                  CÓMO ACTIVAR EL VIDEO DE GOOGLE DRIVE:
+                  1. Sube el video a Drive
+                  2. Comparte → "Cualquier persona con el enlace"
+                  3. Copia el ID (la parte entre /d/ y /view)
+                  4. Pega ese ID abajo en lugar de VIDEO_ID_AQUI
+                  ═══════════════════════════════════════════════
                 -->
-                <div class="video-container">
+                <div class="video-container" id="video-box">
                     <iframe 
                         id="drive-video"
                         src="https://drive.google.com/file/d/VIDEO_ID_AQUI/preview" 
-                        allow="autoplay" 
+                        allow="autoplay; encrypted-media" 
                         allowfullscreen
                         loading="lazy">
                     </iframe>
+
+                    <!-- Empty state (se oculta cuando hay video real) -->
+                    <div class="video-empty" id="video-empty">
+                        <span class="material-icons">videocam</span>
+                        <h3>Video pendiente</h3>
+                        <p>Coloca el ID de tu archivo de Google Drive<br>en el código para activar el reproductor.</p>
+                    </div>
                 </div>
 
-                <div class="video-note">
-                    <span class="material-icons">info</span>
-                    <p>Para activar el video, coloca el ID de tu archivo de Google Drive en el código (ver README).</p>
+                <div class="video-help">
+                    <div class="help-title">
+                        <span class="material-icons">help_outline</span>
+                        Cómo agregar tu video
+                    </div>
+                    <ol>
+                        <li>Sube el video a <strong>Google Drive</strong></li>
+                        <li>Clic derecho → <strong>Compartir</strong> → elige <strong>“Cualquier persona con el enlace”</strong></li>
+                        <li>Copia el enlace. Ejemplo:<br>
+                            <code>https://drive.google.com/file/d/<b>1ABC123xyz</b>/view</code>
+                        </li>
+                        <li>El ID es la parte en negrita: <code>1ABC123xyz</code></li>
+                        <li>Abre <code>index.html</code> y reemplaza <code>VIDEO_ID_AQUI</code> por tu ID</li>
+                    </ol>
                 </div>
             </div>
         </section>
