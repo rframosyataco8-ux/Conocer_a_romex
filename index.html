@@ -130,46 +130,14 @@
             </div>
 
             <div class="video-wrapper">
-                <!--
-                  ═══════════════════════════════════════════════
-                  CÓMO ACTIVAR EL VIDEO DE GOOGLE DRIVE:
-                  1. Sube el video a Drive
-                  2. Comparte → "Cualquier persona con el enlace"
-                  3. Copia el ID (la parte entre /d/ y /view)
-                  4. Pega ese ID abajo en lugar de VIDEO_ID_AQUI
-                  ═══════════════════════════════════════════════
-                -->
-                <div class="video-container" id="video-box">
+                <div class="video-container">
                     <iframe 
                         id="drive-video"
-                        src="https://drive.google.com/file/d/VIDEO_ID_AQUI/preview" 
+                        src="https://drive.google.com/file/d/1UhvFX19-1ovLOpfL2ocKZBLS6d2qZNdH/preview" 
                         allow="autoplay; encrypted-media" 
                         allowfullscreen
                         loading="lazy">
                     </iframe>
-
-                    <!-- Empty state (se oculta cuando hay video real) -->
-                    <div class="video-empty" id="video-empty">
-                        <span class="material-icons">videocam</span>
-                        <h3>Video pendiente</h3>
-                        <p>Coloca el ID de tu archivo de Google Drive<br>en el código para activar el reproductor.</p>
-                    </div>
-                </div>
-
-                <div class="video-help">
-                    <div class="help-title">
-                        <span class="material-icons">help_outline</span>
-                        Cómo agregar tu video
-                    </div>
-                    <ol>
-                        <li>Sube el video a <strong>Google Drive</strong></li>
-                        <li>Clic derecho → <strong>Compartir</strong> → elige <strong>“Cualquier persona con el enlace”</strong></li>
-                        <li>Copia el enlace. Ejemplo:<br>
-                            <code>https://drive.google.com/file/d/<b>1ABC123xyz</b>/view</code>
-                        </li>
-                        <li>El ID es la parte en negrita: <code>1ABC123xyz</code></li>
-                        <li>Abre <code>index.html</code> y reemplaza <code>VIDEO_ID_AQUI</code> por tu ID</li>
-                    </ol>
                 </div>
             </div>
         </section>
