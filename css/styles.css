@@ -26,7 +26,7 @@ body {
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 a { color: inherit; text-decoration: none; }
 
-/* Header — claro */
+/* Header claro */
 .header {
     height: 58px;
     background: #fff;
@@ -78,11 +78,10 @@ a { color: inherit; text-decoration: none; }
     background: var(--soft);
 }
 
-/* Main */
 .main {
     flex: 1;
     width: 100%;
-    max-width: 900px;
+    max-width: 920px;
     margin: 0 auto;
     padding: 48px 24px 96px;
 }
@@ -170,7 +169,6 @@ a { color: inherit; text-decoration: none; }
 .grid-card p { font-size: 13.5px; color: var(--muted); line-height: 1.45; flex: 1; }
 .grid-link { font-size: 13px; font-weight: 600; color: var(--accent); margin-top: 6px; }
 
-/* Back */
 .back {
     display: inline-flex;
     align-items: center;
@@ -190,13 +188,12 @@ a { color: inherit; text-decoration: none; }
 .page-head p { font-size: 14.5px; color: var(--muted); }
 
 /* ══════════════════════════════════════
-   STORY / SCROLLYTELLING TIMELINE
-   (inspirado en weedensenteret.no)
+   SCROLLYTELLING TIMELINE
    ══════════════════════════════════════ */
 .story-intro {
     text-align: center;
-    margin-bottom: 56px;
-    padding: 24px 0 8px;
+    margin-bottom: 48px;
+    padding: 16px 0 8px;
 }
 
 .story-eyebrow {
@@ -223,54 +220,73 @@ a { color: inherit; text-decoration: none; }
 .story {
     display: flex;
     flex-direction: column;
-    gap: 0;
 }
 
+/* Bloque: empieza invisible, anima al entrar en viewport */
 .story-block {
     display: grid;
-    gap: 24px;
-    padding: 48px 0;
+    gap: 28px;
+    padding: 56px 0;
     border-top: 1px solid var(--line);
     align-items: center;
+    opacity: 0;
+    transform: translateY(48px);
+    transition:
+        opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@media (min-width: 700px) {
+.story-block.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Alternar imagen izquierda / derecha en desktop */
+@media (min-width: 720px) {
     .story-block {
         grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        padding: 64px 0;
+        gap: 48px;
+        padding: 72px 0;
     }
 
-    .story-block:nth-child(even) .story-media {
-        order: 2;
+    .story-block:nth-child(even) .story-media { order: 2; }
+    .story-block:nth-child(even) .story-text { order: 1; }
+
+    /* Retraso sutil en la imagen para sensación de capas */
+    .story-block .story-media {
+        transition:
+            opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.12s,
+            transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+        opacity: 0;
+        transform: translateY(32px);
     }
 
-    .story-block:nth-child(even) .story-text {
-        order: 1;
+    .story-block.is-visible .story-media {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
 .story-year {
-    font-size: clamp(36px, 6vw, 52px);
+    font-size: clamp(40px, 7vw, 64px);
     font-weight: 700;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.045em;
     color: var(--accent);
     line-height: 1;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
 }
 
 .story-text p {
-    font-size: 16px;
+    font-size: 17px;
     color: #374151;
-    line-height: 1.65;
-    max-width: 380px;
+    line-height: 1.7;
+    max-width: 400px;
 }
 
 .story-media {
-    border-radius: 14px;
+    border-radius: 16px;
     overflow: hidden;
     background: var(--soft);
-    border: 1px solid var(--line);
     aspect-ratio: 4 / 3;
 }
 
@@ -279,6 +295,15 @@ a { color: inherit; text-decoration: none; }
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.story-block.is-visible .story-media img {
+    transform: scale(1);
+}
+
+.story-block:not(.is-visible) .story-media img {
+    transform: scale(1.06);
 }
 
 /* Process */
@@ -401,7 +426,7 @@ a { color: inherit; text-decoration: none; }
     .video-grid { grid-template-columns: 1fr 1fr 1fr; }
 }
 
-/* Footer — claro */
+/* Footer claro */
 .footer {
     background: var(--soft);
     border-top: 1px solid var(--line);
@@ -410,7 +435,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .footer-inner {
-    max-width: 900px;
+    max-width: 920px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;

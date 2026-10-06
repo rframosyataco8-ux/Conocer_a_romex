@@ -1,4 +1,5 @@
 let currentStep = 0;
+let storyObserver = null;
 
 function showView(viewId) {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
@@ -8,6 +9,11 @@ function showView(viewId) {
     if (viewId === 'view-process') {
         currentStep = 0;
         updateProcessUI();
+    }
+
+    if (viewId === 'view-timeline') {
+        // Reiniciar animaciones al entrar a la timeline
+        requestAnimationFrame(() => initStoryReveal());
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -30,6 +36,38 @@ function renderTimeline() {
             </div>
         </article>
     `).join('');
+}
+
+function initStoryReveal() {
+    if (storyObserver) {
+        storyObserver.disconnect();
+        storyObserver = null;
+    }
+
+    const blocks = document.querySelectorAll('.story-block');
+    if (!blocks.length) return;
+
+    // Reset
+    blocks.forEach(b => b.classList.remove('is-visible'));
+
+    storyObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Una vez visible, no hace falta seguir observando
+                    storyObserver.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            root: null,
+            rootMargin: '0px 0px -12% 0px',
+            threshold: 0.15
+        }
+    );
+
+    blocks.forEach(b => storyObserver.observe(b));
 }
 
 function renderProcess() {
@@ -95,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderTimeline();
     renderProcess();
     initCookies();
+    initStoryReveal();
 
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape') showView('view-home');
