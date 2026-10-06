@@ -1,4 +1,5 @@
 // Datos oficiales — fuente: https://romex.pe/es/nosotros/
+// Cada entrada usa su imagen propia (sin repetir)
 const timelineData = [
     {
         year: "1957",
@@ -68,12 +69,12 @@ const timelineData = [
     {
         year: "2024",
         description: "Nace Cafetal Clásico Instantáneo. Un café soluble con azúcar caramelizada, con un sabor equilibrado.",
-        image: "assets/images/2012_sanjacinto-romex-chocolate-mapa_time_romex.jpg"
+        image: null
     },
     {
         year: "2024",
         description: "Coberturas Romex ahora es Repostería Romex, una marca especializada en productos para la repostería. Ofrece coberturas sabor a chocolate que garantizan calidad y excelencia en cada preparación.",
-        image: "assets/images/Planta_Exportadora%20RomEx_actual.jpg"
+        image: null
     }
 ];
 

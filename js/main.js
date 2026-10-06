@@ -12,8 +12,9 @@ function showView(viewId) {
     }
 
     if (viewId === 'view-timeline') {
-        // Reiniciar animaciones al entrar a la timeline
-        requestAnimationFrame(() => initStoryReveal());
+        requestAnimationFrame(() => {
+            setTimeout(initStoryReveal, 80);
+        });
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -23,19 +24,20 @@ function renderTimeline() {
     const box = document.getElementById('timeline-container');
     if (!box || typeof timelineData === 'undefined') return;
 
-    box.innerHTML = timelineData.map(item => `
-        <article class="story-block">
+    box.innerHTML = timelineData.map((item, i) => {
+        const hasImage = !!item.image;
+        return `
+        <article class="story-block" data-index="${i}">
             <div class="story-text">
                 <div class="story-year">${item.year}</div>
                 <p>${item.description}</p>
             </div>
+            ${hasImage ? `
             <div class="story-media">
-                ${item.image
-                    ? `<img src="${item.image}" alt="${item.year}" loading="lazy" onerror="this.parentElement.style.display='none'">`
-                    : ''}
-            </div>
-        </article>
-    `).join('');
+                <img src="${item.image}" alt="${item.year}" loading="lazy" onerror="this.parentElement.style.display='none'">
+            </div>` : `<div class="story-media story-media--empty"></div>`}
+        </article>`;
+    }).join('');
 }
 
 function initStoryReveal() {
@@ -47,7 +49,6 @@ function initStoryReveal() {
     const blocks = document.querySelectorAll('.story-block');
     if (!blocks.length) return;
 
-    // Reset
     blocks.forEach(b => b.classList.remove('is-visible'));
 
     storyObserver = new IntersectionObserver(
@@ -55,15 +56,14 @@ function initStoryReveal() {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    // Una vez visible, no hace falta seguir observando
                     storyObserver.unobserve(entry.target);
                 }
             });
         },
         {
             root: null,
-            rootMargin: '0px 0px -12% 0px',
-            threshold: 0.15
+            rootMargin: '0px 0px -10% 0px',
+            threshold: 0.12
         }
     );
 
