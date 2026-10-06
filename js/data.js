@@ -1,68 +1,73 @@
-// Datos de la Línea de Tiempo (con imágenes locales)
+// Datos oficiales de la Línea de Tiempo (fuente: romex.pe/es/nosotros/)
 const timelineData = [
     {
         year: "1957",
-        description: "Nace Cafetal, la marca estrella de café tostado molido peruano.",
+        description: "Nace Cafetal, nuestra marca estrella de café tostado molido.",
         image: "assets/images/1957_timeline_romex.jpg"
     },
     {
         year: "1980",
-        description: "Fundación de Selva Industria. Inicio de la recolección de café verde y algodón.",
+        description: "Fundación de Selva Industria. Recolectaban café verde y algodón.",
         image: "assets/images/1980_time_romex.png"
     },
     {
         year: "1997",
-        description: "Fusión que da origen a Romero Trading. Expansión en café, algodón y soya.",
+        description: "Peruana de Industrias y Servicios y Selva Industria se unen para formar Romero Trading. Recolectaban y exportaban café verde, algodón y soya.",
         image: "assets/images/1997_time_romex.jpg"
     },
     {
         year: "2002",
-        description: "Compra de planta en Chincha (Ica). Se inaugura la división de cacao.",
+        description: "Se compra una planta en Chincha, Ica, Perú. Con esto, se inaugura la división de cacao.",
         image: "assets/images/2002_time_romex.jpg"
     },
     {
         year: "2009",
-        description: "Se constituye Exportadora Romex S.A. Hereda la exportación de café y cacao.",
+        description: "Se establece Exportadora Romex, y hereda la exportación de café y cacao de Romero Trading.",
         image: "assets/images/2009_time_romex.jpg"
     },
     {
         year: "2010",
-        description: "Adquisición de terreno en Cajamarquilla (Lima) para futuras expansiones.",
+        description: "Se compra una propiedad en Cajamarquilla, Lima, Perú, para crecimiento futuro.",
         image: "assets/images/2010_time_romex.jpg"
     },
     {
         year: "2011",
-        description: "Consolidación de operaciones y crecimiento en el mercado de cacao.",
+        description: "Nace Cafetal Gourmet, una sub-marca de café premium de Cafetal.",
         image: "assets/images/2011_time_romex.jpg"
     },
     {
         year: "2012",
-        description: "Nace Cafetal Gourmet y se establece la Hacienda San Jacinto (sistema agroforestal de cacao).",
+        description: "Se establece la Hacienda San Jacinto, en Tarapoto, Perú, dónde se practica el sistema agroforestal para cacao y madera, utilizando especies de flora nativas de la zona.",
         image: "assets/images/2012_time_romex.jpg"
     },
     {
+        year: "2012",
+        description: "Nace 338, una marca de café tostado molido premium de distintos orígenes alrededor del Perú.",
+        image: "assets/images/2012_sanjacinto-romex-chocolate-mapa_time_romex.jpg"
+    },
+    {
         year: "2016",
-        description: "Lanzamiento de 338 (café premium) y expansión de la línea de productos.",
+        description: "Nace Innato, nuestra marca de chocolates gourmet, con cacao 100% peruano.",
         image: "assets/images/2016_time_romex.jpg"
     },
     {
         year: "2019",
-        description: "Innato (chocolates gourmet) y Coberturas Romex fortalecen la presencia en el mercado.",
+        description: "Nace Coberturas Romex, nuestra línea de coberturas de chocolate.",
         image: "assets/images/2019_time_romex.jpg"
     },
     {
         year: "2021",
-        description: "Crecimiento continuo en exportación de café y cacao de alta calidad.",
+        description: "Se inaugura la nueva planta de producción de chocolate en Cajamarquilla.",
         image: "assets/images/2021_time_romex.jpg"
     },
     {
-        year: "Actualidad",
-        description: "Nueva planta de chocolate en Cajamarquilla. Aumento de capacidad productiva.",
+        year: "2023 – 2024",
+        description: "Ampliación de capacidad productiva con foco en exportaciones de café y cacao.",
         image: "assets/images/Planta_Exportadora RomEx_actual.jpg"
     }
 ];
 
-// Datos del Proceso de Transformación del Grano
+// Proceso de Transformación del Grano
 const processData = [
     {
         number: 1,
@@ -80,7 +85,7 @@ const processData = [
         number: 3,
         icon: "water_drop",
         title: "Secado y Control de Humedad",
-        description: "Se ajusta la humedad del grano a niveles óptimos (aprox. 6.5% – 7.5%) para garantizar conservación y calidad posterior."
+        description: "Se ajusta la humedad del grano a niveles óptimos para garantizar conservación y calidad posterior."
     },
     {
         number: 4,
