@@ -1,4 +1,4 @@
-// Datos oficiales de la Línea de Tiempo (fuente: romex.pe/es/nosotros/)
+// Datos oficiales — fuente: https://romex.pe/es/nosotros/
 const timelineData = [
     {
         year: "1957",
@@ -47,27 +47,36 @@ const timelineData = [
     },
     {
         year: "2016",
-        description: "Nace Innato, nuestra marca de chocolates gourmet, con cacao 100% peruano.",
+        description: "Nace Innato, una marca premium de chocolates gourmet hechos de cacao 100% peruano.",
         image: "assets/images/2016_time_romex.jpg"
     },
     {
         year: "2019",
-        description: "Nace Coberturas Romex, nuestra línea de coberturas de chocolate.",
+        description: "Nace Coberturas Romex, una marca de coberturas sabor a chocolate para repostería.",
         image: "assets/images/2019_time_romex.jpg"
     },
     {
         year: "2021",
-        description: "Se inaugura la nueva planta de producción de chocolate en Cajamarquilla.",
+        description: "La nueva planta de producción de chocolate se inaugura en la planta de Cajamarquilla, Lima, Perú.",
         image: "assets/images/2021_time_romex.jpg"
     },
     {
-        year: "2023 – 2024",
-        description: "Ampliación de capacidad productiva con foco en exportaciones de café y cacao.",
-        image: "assets/images/Planta_Exportadora RomEx_actual.jpg"
+        year: "2023",
+        description: "Nace Cafetal Gourmet Instantáneo. Un café soluble liofilizado, con sabor intenso y aroma inigualable.",
+        image: "assets/images/Planta_Exportadora%20RomEx_actual.jpg"
+    },
+    {
+        year: "2024",
+        description: "Nace Cafetal Clásico Instantáneo. Un café soluble con azúcar caramelizada, con un sabor equilibrado.",
+        image: "assets/images/2012_sanjacinto-romex-chocolate-mapa_time_romex.jpg"
+    },
+    {
+        year: "2024",
+        description: "Coberturas Romex ahora es Repostería Romex, una marca especializada en productos para la repostería. Ofrece coberturas sabor a chocolate que garantizan calidad y excelencia en cada preparación.",
+        image: "assets/images/Planta_Exportadora%20RomEx_actual.jpg"
     }
 ];
 
-// Proceso de Transformación del Grano
 const processData = [
     {
         number: 1,
