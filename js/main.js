@@ -27,7 +27,7 @@ function renderTimeline() {
     box.innerHTML = timelineData.map((item, i) => {
         const hasImage = !!item.image;
         return `
-        <article class="story-block ${hasImage ? '' : 'no-image'}">
+        <article class="story-block ${hasImage ? '' : 'no-image'}" data-index="${i}">
             <div class="story-text">
                 <div class="story-year">${item.year}</div>
                 <p>${item.description}</p>
@@ -39,7 +39,7 @@ function renderTimeline() {
         </article>`;
     }).join('');
 
-    // Mención final de la planta (no es un hito de timeline)
+    // Mención final de la planta (no es un hito de la línea de tiempo)
     box.innerHTML += `
         <div class="plant-mention">
             <img src="assets/images/Planta_Exportadora%20RomEx_actual.jpg" alt="Planta Exportadora Romex" loading="lazy" onerror="this.style.display='none'">
@@ -76,6 +76,13 @@ function initStoryReveal() {
     );
 
     blocks.forEach(b => storyObserver.observe(b));
+
+    // También animar la mención de planta
+    const plant = document.querySelector('.plant-mention');
+    if (plant) {
+        plant.classList.remove('is-visible');
+        storyObserver.observe(plant);
+    }
 }
 
 function renderProcess() {

@@ -213,6 +213,30 @@ a { color: inherit; text-decoration: none; }
     .story-block:nth-child(even) { grid-template-columns: 1.1fr 1fr; }
     .story-block:nth-child(even) .story-media { order: 1; }
     .story-block:nth-child(even) .story-text { order: 2; }
+
+    /* Sin imagen: año y texto lado a lado, sin hueco vacío */
+    .story-block.no-image {
+        grid-template-columns: auto 1fr;
+        gap: 24px;
+    }
+}
+
+.story-block.no-image .story-text {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.story-block.no-image .story-year {
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.story-block.no-image .story-text p {
+    flex: 1;
+    min-width: 200px;
 }
 
 .story-year {
@@ -290,8 +314,33 @@ a { color: inherit; text-decoration: none; }
     .story-block.is-visible .story-media:hover img { transform: scale(1.04); }
 }
 
-.story-media--empty {
-    display: none;
+.story-media--empty { display: none; }
+
+/* Sin imagen: año y texto lado a lado */
+.story-block.no-image {
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+    .story-block.no-image {
+        grid-template-columns: auto 1fr;
+        gap: 32px;
+    }
+    .story-block.no-image .story-text {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        gap: 28px;
+        flex-wrap: wrap;
+    }
+    .story-block.no-image .story-year {
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+    .story-block.no-image .story-text p {
+        flex: 1;
+        min-width: 200px;
+    }
 }
 
 /* Process */
@@ -454,3 +503,32 @@ a { color: inherit; text-decoration: none; }
 
 .cookie p { font-size: 13px; color: var(--muted); }
 .cookie-btns { display: flex; gap: 8px; flex-shrink: 0; }
+
+/* Mención final de planta */
+.plant-mention {
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.plant-mention.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.plant-mention img {
+    width: 100%;
+    max-width: 560px;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.plant-mention p {
+    font-size: 13.5px;
+    color: var(--muted);
+}
