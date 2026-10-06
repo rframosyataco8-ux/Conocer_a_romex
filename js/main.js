@@ -19,8 +19,11 @@ function renderTimeline() {
 
     container.innerHTML = timelineData.map(item => `
         <div class="timeline-item">
-            <div class="timeline-year">${item.year}</div>
-            <div class="timeline-desc">${item.description}</div>
+            ${item.image ? `<img class="timeline-img" src="${item.image}" alt="${item.year}" loading="lazy" onerror="this.style.display='none'">` : ''}
+            <div class="timeline-content">
+                <div class="timeline-year">${item.year}</div>
+                <div class="timeline-desc">${item.description}</div>
+            </div>
         </div>
     `).join('');
 }
@@ -107,26 +110,11 @@ function initScrollTop() {
     });
 }
 
-// Hide empty state if a real video ID is present
-function checkVideo() {
-    const iframe = document.getElementById('drive-video');
-    const empty = document.getElementById('video-empty');
-    if (!iframe || !empty) return;
-
-    const src = iframe.getAttribute('src') || '';
-    if (src.includes('VIDEO_ID_AQUI')) {
-        empty.style.display = 'flex';
-    } else {
-        empty.style.display = 'none';
-    }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     renderTimeline();
     renderProcess();
     initCookieConsent();
     initScrollTop();
-    checkVideo();
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') showView('view-home');

@@ -1,44 +1,68 @@
-// Datos de la Línea de Tiempo
+// Datos de la Línea de Tiempo (con imágenes locales)
 const timelineData = [
     {
         year: "1957",
-        description: "Nace Cafetal, la marca estrella de café tostado molido peruano."
+        description: "Nace Cafetal, la marca estrella de café tostado molido peruano.",
+        image: "assets/images/1957_timeline_romex.jpg"
     },
     {
         year: "1980",
-        description: "Fundación de Selva Industria. Inicio de la recolección de café verde y algodón."
+        description: "Fundación de Selva Industria. Inicio de la recolección de café verde y algodón.",
+        image: "assets/images/1980_time_romex.png"
     },
     {
         year: "1997",
-        description: "Fusión que da origen a Romero Trading. Expansión en café, algodón y soya."
+        description: "Fusión que da origen a Romero Trading. Expansión en café, algodón y soya.",
+        image: "assets/images/1997_time_romex.jpg"
     },
     {
         year: "2002",
-        description: "Compra de planta en Chincha (Ica). Se inaugura la división de cacao."
+        description: "Compra de planta en Chincha (Ica). Se inaugura la división de cacao.",
+        image: "assets/images/2002_time_romex.jpg"
     },
     {
         year: "2009",
-        description: "Se constituye Exportadora Romex S.A. Hereda la exportación de café y cacao."
+        description: "Se constituye Exportadora Romex S.A. Hereda la exportación de café y cacao.",
+        image: "assets/images/2009_time_romex.jpg"
     },
     {
         year: "2010",
-        description: "Adquisición de terreno en Cajamarquilla (Lima) para futuras expansiones."
+        description: "Adquisición de terreno en Cajamarquilla (Lima) para futuras expansiones.",
+        image: "assets/images/2010_time_romex.jpg"
+    },
+    {
+        year: "2011",
+        description: "Consolidación de operaciones y crecimiento en el mercado de cacao.",
+        image: "assets/images/2011_time_romex.jpg"
     },
     {
         year: "2012",
-        description: "Nace Cafetal Gourmet y se establece la Hacienda San Jacinto (sistema agroforestal de cacao)."
+        description: "Nace Cafetal Gourmet y se establece la Hacienda San Jacinto (sistema agroforestal de cacao).",
+        image: "assets/images/2012_time_romex.jpg"
     },
     {
-        year: "2016 – 2021",
-        description: "Lanzamiento de 338 (café premium), Innato (chocolates gourmet) y Coberturas Romex."
+        year: "2016",
+        description: "Lanzamiento de 338 (café premium) y expansión de la línea de productos.",
+        image: "assets/images/2016_time_romex.jpg"
     },
     {
-        year: "2023 – 2024",
-        description: "Nueva planta de chocolate en Cajamarquilla. Aumento de capacidad: +50% café y +30% cacao."
+        year: "2019",
+        description: "Innato (chocolates gourmet) y Coberturas Romex fortalecen la presencia en el mercado.",
+        image: "assets/images/2019_time_romex.jpg"
+    },
+    {
+        year: "2021",
+        description: "Crecimiento continuo en exportación de café y cacao de alta calidad.",
+        image: "assets/images/2021_time_romex.jpg"
+    },
+    {
+        year: "Actualidad",
+        description: "Nueva planta de chocolate en Cajamarquilla. Aumento de capacidad productiva.",
+        image: "assets/images/Planta_Exportadora RomEx_actual.jpg"
     }
 ];
 
-// Datos del Proceso de Transformación del Grano (sin imágenes)
+// Datos del Proceso de Transformación del Grano
 const processData = [
     {
         number: 1,
