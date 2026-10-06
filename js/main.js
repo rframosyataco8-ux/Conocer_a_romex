@@ -1,4 +1,3 @@
-let currentStep = 0;
 let storyObserver = null;
 
 function showView(viewId) {
@@ -6,12 +5,7 @@ function showView(viewId) {
     const el = document.getElementById(viewId);
     if (el) el.classList.add('active');
 
-    if (viewId === 'view-process') {
-        currentStep = 0;
-        updateProcessUI();
-    }
-
-    if (viewId === 'view-timeline') {
+    if (viewId === 'view-timeline' || viewId === 'view-process') {
         requestAnimationFrame(() => setTimeout(initStoryReveal, 80));
     }
 
@@ -45,6 +39,36 @@ function renderTimeline() {
     `;
 }
 
+function renderProcess() {
+    const box = document.getElementById('process-container');
+    if (!box || typeof processData === 'undefined') return;
+
+    box.innerHTML = processData.map((step, i) => {
+        const hasImage = !!step.image;
+        return `
+        <article class="story-block process-block ${hasImage ? '' : 'no-image'}" data-index="${i}">
+            <div class="story-text">
+                <div class="process-label">
+                    <span class="process-step-badge">0${step.number}</span>
+                    <span class="material-icons process-step-icon">${step.icon}</span>
+                </div>
+                <div class="story-year process-title">${step.title}</div>
+                <p>${step.description}</p>
+            </div>
+            ${hasImage ? `
+            <div class="story-media">
+                <img src="${step.image}" alt="${step.title}" loading="lazy" onerror="this.parentElement.classList.add('media-fallback')">
+            </div>` : `
+            <div class="story-media process-visual">
+                <div class="process-visual-inner">
+                    <span class="material-icons">${step.icon}</span>
+                    <span class="process-visual-num">0${step.number}</span>
+                </div>
+            </div>`}
+        </article>`;
+    }).join('');
+}
+
 function initStoryReveal() {
     if (storyObserver) {
         storyObserver.disconnect();
@@ -69,76 +93,6 @@ function initStoryReveal() {
     );
 
     blocks.forEach(b => storyObserver.observe(b));
-}
-
-function renderProcess() {
-    const box = document.getElementById('process-container');
-    const dots = document.getElementById('process-dots');
-    if (!box || typeof processData === 'undefined') return;
-
-    // Dots de las 7 etapas
-    if (dots) {
-        dots.innerHTML = processData.map((step, i) => `
-            <button type="button" class="process-dot ${i === 0 ? 'active' : ''}" data-step="${i}" onclick="goToStep(${i})" title="${step.title}">
-                <span class="material-icons">${step.icon}</span>
-            </button>
-        `).join('');
-    }
-
-    // Cards de las 7 etapas
-    box.innerHTML = processData.map((step, i) => `
-        <div class="step-card ${i === 0 ? 'active' : ''}" data-step="${i}">
-            <div class="step-icon">
-                <span class="material-icons">${step.icon}</span>
-            </div>
-            <div class="step-head">
-                <span class="step-num">0${step.number}</span>
-                <h3>${step.title}</h3>
-            </div>
-            <p>${step.description}</p>
-        </div>
-    `).join('');
-
-    document.getElementById('progress-total').textContent = processData.length;
-    updateProcessUI();
-}
-
-function goToStep(index) {
-    currentStep = index;
-    updateProcessUI();
-}
-
-function changeStep(dir) {
-    const total = processData.length;
-    currentStep = Math.max(0, Math.min(total - 1, currentStep + dir));
-    updateProcessUI();
-}
-
-function updateProcessUI() {
-    const total = processData.length;
-
-    document.querySelectorAll('.step-card').forEach((card, i) => {
-        const isActive = i === currentStep;
-        card.classList.toggle('active', isActive);
-        if (isActive) {
-            card.classList.remove('enter');
-            void card.offsetWidth; // reflow
-            card.classList.add('enter');
-        }
-    });
-
-    document.querySelectorAll('.process-dot').forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentStep);
-        dot.classList.toggle('done', i < currentStep);
-    });
-
-    document.getElementById('progress-fill').style.width = ((currentStep + 1) / total * 100) + '%';
-    document.getElementById('progress-current').textContent = currentStep + 1;
-
-    document.getElementById('btn-prev').disabled = currentStep === 0;
-    const next = document.getElementById('btn-next');
-    next.disabled = currentStep === total - 1;
-    next.textContent = currentStep === total - 1 ? 'Finalizado' : 'Siguiente';
 }
 
 function initCookies() {
@@ -168,9 +122,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape') showView('view-home');
-        if (document.getElementById('view-process')?.classList.contains('active')) {
-            if (e.key === 'ArrowRight') changeStep(1);
-            if (e.key === 'ArrowLeft') changeStep(-1);
-        }
     });
 });

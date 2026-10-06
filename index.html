@@ -68,24 +68,13 @@
                 <span class="material-icons">arrow_back</span> Volver
             </button>
 
-            <div class="process-hero">
-                <p class="process-eyebrow">Proceso industrial</p>
+            <div class="story-intro">
+                <p class="story-eyebrow">Proceso industrial</p>
                 <h1>Transformación del grano</h1>
-                <p class="process-lead">Del cacao en grano al producto final, con trazabilidad completa en cada etapa.</p>
+                <p class="story-lead">Desplázate para recorrer cada etapa: del cacao en grano al producto final.</p>
             </div>
 
-            <!-- Indicadores de las 7 etapas -->
-            <div class="process-dots" id="process-dots"></div>
-
-            <div class="process-bar"><div class="process-bar-fill" id="progress-fill"></div></div>
-            <p class="process-count">Etapa <span id="progress-current">1</span> de <span id="progress-total">7</span></p>
-
-            <div id="process-container"></div>
-
-            <div class="process-actions">
-                <button type="button" class="btn btn-ghost" id="btn-prev" onclick="changeStep(-1)" disabled>Anterior</button>
-                <button type="button" class="btn btn-primary" id="btn-next" onclick="changeStep(1)">Siguiente</button>
-            </div>
+            <div class="story" id="process-container"></div>
         </section>
 
         <section id="view-video" class="view">
