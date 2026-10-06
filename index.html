@@ -28,58 +28,73 @@
 
     <main class="main">
 
-        <!-- HOME -->
+        <!-- ════════ HOME: Split-screen + Grid ════════ -->
         <section id="view-home" class="view active">
-            <div class="hero">
-                <p class="hero-eyebrow">Exportadora de Café y Cacao del Perú</p>
-                <h1>Excelencia desde<br>el origen</h1>
-                <p class="hero-sub">Conoce la historia, el proceso industrial y el compromiso de calidad de Exportadora Romex S.A.</p>
+
+            <!-- Split-screen hero -->
+            <div class="split">
+                <div class="split-left">
+                    <p class="split-eyebrow">Exportadora · Perú</p>
+                    <h1>Café y cacao<br>de excelencia</h1>
+                    <p class="split-text">Desde 1957, Romex lleva el sabor y la calidad del Perú al mundo. Explora nuestra historia, proceso y compromiso con la trazabilidad.</p>
+                    <div class="split-actions">
+                        <button type="button" class="btn btn-primary" onclick="showView('view-timeline')">Ver historia</button>
+                        <button type="button" class="btn btn-ghost" onclick="showView('view-process')">Ver proceso</button>
+                    </div>
+                </div>
+                <div class="split-right">
+                    <div class="split-panel">
+                        <div class="split-stat">
+                            <span class="stat-value">1957</span>
+                            <span class="stat-label">Año de origen</span>
+                        </div>
+                        <div class="split-stat">
+                            <span class="stat-value">12</span>
+                            <span class="stat-label">Centros de acopio</span>
+                        </div>
+                        <div class="split-stat">
+                            <span class="stat-value">100%</span>
+                            <span class="stat-label">Trazabilidad</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="modules">
-                <a href="https://romex.pe/es/nosotros/" target="_blank" rel="noopener" class="module">
-                    <span class="module-num">01</span>
-                    <div class="module-body">
-                        <h2>Conoce Nosotros</h2>
-                        <p>Sitio oficial, valores y operaciones de la empresa.</p>
-                    </div>
-                    <span class="module-arrow material-icons">arrow_forward</span>
+            <!-- Grid de módulos -->
+            <div class="grid-label">Explorar</div>
+            <div class="grid">
+                <a href="https://romex.pe/es/nosotros/" target="_blank" rel="noopener" class="grid-card">
+                    <span class="grid-num">01</span>
+                    <h2>Conoce Nosotros</h2>
+                    <p>Sitio oficial, valores y operaciones.</p>
+                    <span class="grid-link">Visitar sitio →</span>
                 </a>
-
-                <button type="button" class="module" onclick="showView('view-timeline')">
-                    <span class="module-num">02</span>
-                    <div class="module-body">
-                        <h2>Línea de Tiempo</h2>
-                        <p>Hitos desde 1957 hasta la actualidad.</p>
-                    </div>
-                    <span class="module-arrow material-icons">arrow_forward</span>
+                <button type="button" class="grid-card" onclick="showView('view-timeline')">
+                    <span class="grid-num">02</span>
+                    <h2>Línea de Tiempo</h2>
+                    <p>Hitos desde 1957 hasta hoy.</p>
+                    <span class="grid-link">Explorar →</span>
                 </button>
-
-                <button type="button" class="module" onclick="showView('view-process')">
-                    <span class="module-num">03</span>
-                    <div class="module-body">
-                        <h2>Transformación</h2>
-                        <p>Proceso del grano: recepción hasta despacho.</p>
-                    </div>
-                    <span class="module-arrow material-icons">arrow_forward</span>
+                <button type="button" class="grid-card" onclick="showView('view-process')">
+                    <span class="grid-num">03</span>
+                    <h2>Transformación</h2>
+                    <p>Del grano al producto final.</p>
+                    <span class="grid-link">Ver proceso →</span>
                 </button>
-
-                <button type="button" class="module" onclick="showView('view-video')">
-                    <span class="module-num">04</span>
-                    <div class="module-body">
-                        <h2>Videos</h2>
-                        <p>Contenido audiovisual institucional.</p>
-                    </div>
-                    <span class="module-arrow material-icons">arrow_forward</span>
+                <button type="button" class="grid-card" onclick="showView('view-video')">
+                    <span class="grid-num">04</span>
+                    <h2>Videos</h2>
+                    <p>Contenido audiovisual institucional.</p>
+                    <span class="grid-link">Ver videos →</span>
                 </button>
             </div>
+
         </section>
 
         <!-- TIMELINE -->
         <section id="view-timeline" class="view">
             <button type="button" class="back" onclick="showView('view-home')">
-                <span class="material-icons">arrow_back</span>
-                Inicio
+                <span class="material-icons">arrow_back</span> Inicio
             </button>
             <header class="page-head">
                 <h1>Línea de Tiempo</h1>
@@ -91,25 +106,18 @@
         <!-- PROCESS -->
         <section id="view-process" class="view">
             <button type="button" class="back" onclick="showView('view-home')">
-                <span class="material-icons">arrow_back</span>
-                Inicio
+                <span class="material-icons">arrow_back</span> Inicio
             </button>
             <header class="page-head">
                 <h1>Transformación del Grano</h1>
                 <p>Proceso industrial del cacao con trazabilidad completa</p>
             </header>
-
             <div class="process-note">
                 Los granos llegan desde 12 centros de acopio en las principales zonas cacaoteras del Perú. Cada lote es controlado en origen, calidad y humedad.
             </div>
-
-            <div class="process-bar">
-                <div class="process-bar-fill" id="progress-fill"></div>
-            </div>
+            <div class="process-bar"><div class="process-bar-fill" id="progress-fill"></div></div>
             <p class="process-count">Etapa <span id="progress-current">1</span> de <span id="progress-total">7</span></p>
-
             <div id="process-container"></div>
-
             <div class="process-actions">
                 <button type="button" class="btn btn-ghost" id="btn-prev" onclick="changeStep(-1)" disabled>Anterior</button>
                 <button type="button" class="btn btn-primary" id="btn-next" onclick="changeStep(1)">Siguiente</button>
@@ -119,23 +127,18 @@
         <!-- VIDEO -->
         <section id="view-video" class="view">
             <button type="button" class="back" onclick="showView('view-home')">
-                <span class="material-icons">arrow_back</span>
-                Inicio
+                <span class="material-icons">arrow_back</span> Inicio
             </button>
             <header class="page-head">
                 <h1>Videos</h1>
                 <p>Contenido audiovisual institucional</p>
             </header>
-
-            <!-- Featured video (first) -->
             <div class="video-featured">
                 <div class="video-frame">
                     <iframe src="https://www.youtube.com/embed/8N5wjtC0hvc" title="Video principal" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
                 <p class="video-label">Video principal</p>
             </div>
-
-            <!-- Secondary videos -->
             <div class="video-grid">
                 <div class="video-item">
                     <div class="video-frame">
