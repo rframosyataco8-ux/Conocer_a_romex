@@ -27,7 +27,7 @@ function renderTimeline() {
     box.innerHTML = timelineData.map((item, i) => {
         const hasImage = !!item.image;
         return `
-        <article class="story-block" data-index="${i}">
+        <article class="story-block ${hasImage ? '' : 'no-image'}">
             <div class="story-text">
                 <div class="story-year">${item.year}</div>
                 <p>${item.description}</p>
@@ -35,9 +35,17 @@ function renderTimeline() {
             ${hasImage ? `
             <div class="story-media">
                 <img src="${item.image}" alt="${item.year}" loading="lazy" onerror="this.parentElement.style.display='none'">
-            </div>` : `<div class="story-media story-media--empty"></div>`}
+            </div>` : ''}
         </article>`;
     }).join('');
+
+    // Mención final de la planta (no es un hito de timeline)
+    box.innerHTML += `
+        <div class="plant-mention">
+            <img src="assets/images/Planta_Exportadora%20RomEx_actual.jpg" alt="Planta Exportadora Romex" loading="lazy" onerror="this.style.display='none'">
+            <p>Planta Exportadora Romex — instalaciones actuales</p>
+        </div>
+    `;
 }
 
 function initStoryReveal() {
@@ -62,8 +70,8 @@ function initStoryReveal() {
         },
         {
             root: null,
-            rootMargin: '0px 0px -10% 0px',
-            threshold: 0.12
+            rootMargin: '0px 0px -8% 0px',
+            threshold: 0.1
         }
     );
 
@@ -137,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape') showView('view-home');
-        if (document.getElementById('view-process').classList.contains('active')) {
+        if (document.getElementById('view-process')?.classList.contains('active')) {
             if (e.key === 'ArrowRight') changeStep(1);
             if (e.key === 'ArrowLeft') changeStep(-1);
         }

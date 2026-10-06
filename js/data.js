@@ -1,5 +1,4 @@
 // Datos oficiales — fuente: https://romex.pe/es/nosotros/
-// Cada entrada usa su imagen propia (sin repetir)
 const timelineData = [
     {
         year: "1957",
@@ -63,20 +62,20 @@ const timelineData = [
     },
     {
         year: "2023",
-        description: "Nace Cafetal Gourmet Instantáneo. Un café soluble liofilizado, con sabor intenso y aroma inigualable.",
-        image: "assets/images/Planta_Exportadora%20RomEx_actual.jpg"
+        description: "Nace Cafetal Gourmet Instantáneo. Un café soluble liofilizado, con sabor intenso y aroma inigualable."
     },
     {
         year: "2024",
-        description: "Nace Cafetal Clásico Instantáneo. Un café soluble con azúcar caramelizada, con un sabor equilibrado.",
-        image: null
+        description: "Nace Cafetal Clásico Instantáneo. Un café soluble con azúcar caramelizada, con un sabor equilibrado."
     },
     {
         year: "2024",
-        description: "Coberturas Romex ahora es Repostería Romex, una marca especializada en productos para la repostería. Ofrece coberturas sabor a chocolate que garantizan calidad y excelencia en cada preparación.",
-        image: null
+        description: "Coberturas Romex ahora es Repostería Romex, una marca especializada en productos para la repostería. Ofrece coberturas sabor a chocolate que garantizan calidad y excelencia en cada preparación."
     }
 ];
+
+// Mención final (no es un hito de timeline)
+const plantImage = "assets/images/Planta_Exportadora%20RomEx_actual.jpg";
 
 const processData = [
     {
