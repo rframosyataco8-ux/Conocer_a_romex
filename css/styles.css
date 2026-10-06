@@ -153,7 +153,7 @@ a { color: inherit; text-decoration: none; }
 .page-head h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 5px; }
 .page-head p { font-size: 14.5px; color: var(--muted); }
 
-/* Timeline scrollytelling */
+/* Timeline scrollytelling con profundidad */
 .story-intro {
     text-align: center;
     margin-bottom: 36px;
