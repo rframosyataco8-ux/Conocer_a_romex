@@ -54,7 +54,7 @@ function initStoryReveal() {
         storyObserver = null;
     }
 
-    const blocks = document.querySelectorAll('.story-block');
+    const blocks = document.querySelectorAll('.story-block, .plant-mention');
     if (!blocks.length) return;
 
     blocks.forEach(b => b.classList.remove('is-visible'));
@@ -76,13 +76,6 @@ function initStoryReveal() {
     );
 
     blocks.forEach(b => storyObserver.observe(b));
-
-    // También animar la mención de planta
-    const plant = document.querySelector('.plant-mention');
-    if (plant) {
-        plant.classList.remove('is-visible');
-        storyObserver.observe(plant);
-    }
 }
 
 function renderProcess() {

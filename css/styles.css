@@ -214,10 +214,10 @@ a { color: inherit; text-decoration: none; }
     .story-block:nth-child(even) .story-media { order: 1; }
     .story-block:nth-child(even) .story-text { order: 2; }
 
-    /* Sin imagen: año y texto lado a lado, sin hueco vacío */
+    /* Sin imagen: año y texto lado a lado */
     .story-block.no-image {
         grid-template-columns: auto 1fr;
-        gap: 24px;
+        gap: 32px;
     }
 }
 
@@ -225,7 +225,7 @@ a { color: inherit; text-decoration: none; }
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    gap: 24px;
+    gap: 28px;
     flex-wrap: wrap;
 }
 
