@@ -1,20 +1,17 @@
-let currentStep = 0;
 let storyObserver = null;
+let processObserver = null;
 
 function showView(viewId) {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
     const el = document.getElementById(viewId);
     if (el) el.classList.add('active');
 
-    if (viewId === 'view-process') {
-        currentStep = 0;
-        updateProcessUI();
+    if (viewId === 'view-timeline') {
+        requestAnimationFrame(() => setTimeout(initStoryReveal, 80));
     }
 
-    if (viewId === 'view-timeline') {
-        requestAnimationFrame(() => {
-            setTimeout(initStoryReveal, 80);
-        });
+    if (viewId === 'view-process') {
+        requestAnimationFrame(() => setTimeout(initProcessReveal, 80));
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -39,7 +36,6 @@ function renderTimeline() {
         </article>`;
     }).join('');
 
-    // Mención final de la planta (no es un hito de la línea de tiempo)
     box.innerHTML += `
         <div class="plant-mention">
             <img src="assets/images/Planta_Exportadora%20RomEx_actual.jpg" alt="Planta Exportadora Romex" loading="lazy" onerror="this.style.display='none'">
@@ -68,11 +64,7 @@ function initStoryReveal() {
                 }
             });
         },
-        {
-            root: null,
-            rootMargin: '0px 0px -8% 0px',
-            threshold: 0.1
-        }
+        { root: null, rootMargin: '0px 0px -8% 0px', threshold: 0.1 }
     );
 
     blocks.forEach(b => storyObserver.observe(b));
@@ -83,39 +75,46 @@ function renderProcess() {
     if (!box || typeof processData === 'undefined') return;
 
     box.innerHTML = processData.map((step, i) => `
-        <div class="step-card ${i === 0 ? 'active' : ''}" data-step="${i}">
-            <div class="step-head">
-                <span class="step-num">${step.number}</span>
-                <h3>${step.title}</h3>
+        <div class="process-step" data-step="${i}">
+            <div class="process-step-rail">
+                <div class="process-step-dot">
+                    <span class="material-icons">${step.icon}</span>
+                </div>
+                ${i < processData.length - 1 ? '<div class="process-step-line"></div>' : ''}
             </div>
-            <p>${step.description}</p>
+            <div class="process-step-body">
+                <span class="process-step-num">0${step.number}</span>
+                <h3>${step.title}</h3>
+                <p>${step.description}</p>
+            </div>
         </div>
     `).join('');
-
-    document.getElementById('progress-total').textContent = processData.length;
-    updateProcessUI();
 }
 
-function changeStep(dir) {
-    const total = processData.length;
-    currentStep = Math.max(0, Math.min(total - 1, currentStep + dir));
-    updateProcessUI();
-}
+function initProcessReveal() {
+    if (processObserver) {
+        processObserver.disconnect();
+        processObserver = null;
+    }
 
-function updateProcessUI() {
-    const total = processData.length;
+    const steps = document.querySelectorAll('.process-step');
+    if (!steps.length) return;
 
-    document.querySelectorAll('.step-card').forEach((card, i) => {
-        card.classList.toggle('active', i === currentStep);
-    });
+    steps.forEach(s => s.classList.remove('is-visible'));
 
-    document.getElementById('progress-fill').style.width = ((currentStep + 1) / total * 100) + '%';
-    document.getElementById('progress-current').textContent = currentStep + 1;
+    processObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    processObserver.unobserve(entry.target);
+                }
+            });
+        },
+        { root: null, rootMargin: '0px 0px -6% 0px', threshold: 0.15 }
+    );
 
-    document.getElementById('btn-prev').disabled = currentStep === 0;
-    const next = document.getElementById('btn-next');
-    next.disabled = currentStep === total - 1;
-    next.textContent = currentStep === total - 1 ? 'Finalizado' : 'Siguiente';
+    steps.forEach(s => processObserver.observe(s));
 }
 
 function initCookies() {
@@ -145,9 +144,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape') showView('view-home');
-        if (document.getElementById('view-process')?.classList.contains('active')) {
-            if (e.key === 'ArrowRight') changeStep(1);
-            if (e.key === 'ArrowLeft') changeStep(-1);
-        }
     });
 });

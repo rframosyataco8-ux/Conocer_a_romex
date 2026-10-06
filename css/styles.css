@@ -26,12 +26,7 @@ body {
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 a { color: inherit; text-decoration: none; }
 
-/* Sin header / logo / nav */
-.header,
-.nav,
-nav {
-    display: none !important;
-}
+.header, .nav, nav { display: none !important; }
 
 .main {
     flex: 1;
@@ -73,7 +68,6 @@ nav {
     letter-spacing: -0.04em;
     line-height: 1.1;
     margin-bottom: 18px;
-    color: var(--ink);
 }
 
 .hero-sub {
@@ -168,7 +162,6 @@ nav {
 .story-intro {
     text-align: center;
     margin-bottom: 48px;
-    padding: 8px 0;
 }
 
 .story-eyebrow {
@@ -324,95 +317,180 @@ nav {
     }
 }
 
-/* Process */
-.process-note {
-    background: var(--soft);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 16px 18px;
-    font-size: 14px;
-    color: #334155;
-    line-height: 1.55;
-    margin-bottom: 28px;
+/* ═══════════════════════════════════════
+   PROCESO — diseño elegante vertical
+   ═══════════════════════════════════════ */
+
+.process-hero {
+    text-align: center;
+    margin-bottom: 56px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.process-bar {
-    height: 2px;
-    background: var(--line);
-    border-radius: 1px;
-    overflow: hidden;
-    margin-bottom: 8px;
+.process-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
 }
 
-.process-bar-fill {
-    height: 100%;
-    width: 14.28%;
-    background: var(--accent);
-    transition: width 0.35s ease;
-}
-
-.process-count {
-    font-size: 12px;
-    color: var(--muted);
-    font-weight: 500;
-    margin-bottom: 18px;
-}
-
-.step-card {
-    display: none;
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 24px;
-    animation: enter 0.25s ease;
-}
-.step-card.active { display: block; }
-
-.step-head {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 10px;
-}
-
-.step-num {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: white;
-    font-size: 12px;
+.process-hero h1 {
+    font-size: clamp(28px, 4vw, 36px);
     font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 14px;
+}
+
+.process-lead {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.65;
+}
+
+.process-track {
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.process-step {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+        opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.process-step.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.process-step-rail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.process-step-dot {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid var(--line);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    z-index: 2;
+    transition:
+        border-color 0.4s ease,
+        background 0.4s ease,
+        box-shadow 0.4s ease,
+        transform 0.4s ease;
 }
 
-.step-head h3 { font-size: 16.5px; font-weight: 600; }
-.step-card p { font-size: 14.5px; color: var(--muted); line-height: 1.65; padding-left: 40px; }
-
-.process-actions {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    margin-top: 24px;
+.process-step-dot .material-icons {
+    font-size: 22px;
+    color: var(--muted);
+    transition: color 0.4s ease;
 }
 
-.btn {
-    font-size: 13px;
+.process-step.is-visible .process-step-dot {
+    border-color: var(--accent);
+    background: var(--accent);
+    box-shadow: 0 4px 16px rgba(10, 46, 107, 0.25);
+    transform: scale(1.05);
+}
+
+.process-step.is-visible .process-step-dot .material-icons {
+    color: #fff;
+}
+
+.process-step-line {
+    width: 2px;
+    flex: 1;
+    min-height: 32px;
+    background: var(--line);
+    margin: 6px 0;
+    transition: background 0.5s ease 0.2s;
+}
+
+.process-step.is-visible .process-step-line {
+    background: linear-gradient(to bottom, var(--accent), var(--line));
+}
+
+.process-step-body {
+    padding-bottom: 48px;
+}
+
+.process-step:last-child .process-step-body {
+    padding-bottom: 0;
+}
+
+.process-step-num {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    opacity: 0.45;
+    margin-bottom: 8px;
+}
+
+.process-step-body h3 {
+    font-size: 18px;
     font-weight: 600;
-    padding: 11px 20px;
-    border-radius: 8px;
-    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    letter-spacing: -0.015em;
+    margin-bottom: 10px;
+    color: var(--ink);
 }
 
-.btn-primary { background: var(--accent); color: white; }
-.btn-primary:hover:not(:disabled) { background: #061f4a; }
-.btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--line); }
-.btn-ghost:hover:not(:disabled) { background: var(--soft); color: var(--ink); }
-.btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.process-step-body p {
+    font-size: 15px;
+    color: #475569;
+    line-height: 1.7;
+    max-width: 460px;
+}
 
+.process-step-body p strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+@media (min-width: 600px) {
+    .process-step {
+        grid-template-columns: 64px 1fr;
+        gap: 28px;
+    }
+
+    .process-step-dot {
+        width: 52px;
+        height: 52px;
+    }
+
+    .process-step-dot .material-icons {
+        font-size: 24px;
+    }
+
+    .process-step-body h3 {
+        font-size: 19px;
+    }
+
+    .process-step-body p {
+        font-size: 15.5px;
+    }
+}
+
+/* Videos */
 .video-featured { margin-bottom: 24px; }
 
 .video-featured .video-frame,
@@ -481,6 +559,19 @@ nav {
 
 .cookie p { font-size: 13px; color: var(--muted); }
 .cookie-btns { display: flex; gap: 8px; flex-shrink: 0; }
+
+.btn {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 11px 20px;
+    border-radius: 8px;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover:not(:disabled) { background: #061f4a; }
+.btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--line); }
+.btn-ghost:hover:not(:disabled) { background: var(--soft); color: var(--ink); }
 
 .plant-mention {
     margin-top: 48px;

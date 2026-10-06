@@ -67,20 +67,14 @@
             <button type="button" class="back" onclick="showView('view-home')">
                 <span class="material-icons">arrow_back</span> Volver
             </button>
-            <header class="page-head">
-                <h1>Transformación del Grano</h1>
-                <p>Proceso industrial del cacao con trazabilidad completa</p>
-            </header>
-            <div class="process-note">
-                Los granos llegan a planta desde los centros de acopio. Cada lote es controlado en origen, calidad y humedad.
+
+            <div class="process-hero">
+                <p class="process-eyebrow">Proceso industrial</p>
+                <h1>Transformación del grano</h1>
+                <p class="process-lead">Del cacao en grano al producto final, con trazabilidad completa en cada etapa.</p>
             </div>
-            <div class="process-bar"><div class="process-bar-fill" id="progress-fill"></div></div>
-            <p class="process-count">Etapa <span id="progress-current">1</span> de <span id="progress-total">7</span></p>
-            <div id="process-container"></div>
-            <div class="process-actions">
-                <button type="button" class="btn btn-ghost" id="btn-prev" onclick="changeStep(-1)" disabled>Anterior</button>
-                <button type="button" class="btn btn-primary" id="btn-next" onclick="changeStep(1)">Siguiente</button>
-            </div>
+
+            <div class="process-track" id="process-container"></div>
         </section>
 
         <section id="view-video" class="view">
