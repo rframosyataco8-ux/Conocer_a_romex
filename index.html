@@ -6,7 +6,6 @@
     <meta name="description" content="Exportadora Romex S.A. — Café y cacao del Perú">
     <meta name="theme-color" content="#0a2e6b">
     <title>Romex S.A. | Exportadora de Café y Cacao</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a2e6b' width='100' height='100' rx='20'/><text y='68' x='50' text-anchor='middle' font-size='48' font-weight='700' fill='white' font-family='sans-serif'>R</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
@@ -15,11 +14,9 @@
 
     <header class="header">
         <a href="#" class="logo" onclick="showView('view-home'); return false;">
-            <div class="logo-mark">R</div>
-            <div class="logo-text">
-                <strong>ROMEX</strong>
-                <span>S.A.</span>
-            </div>
+            <span class="logo-name">ROMEX</span>
+            <span class="logo-sep">·</span>
+            <span class="logo-sa">S.A.</span>
         </a>
         <nav class="nav">
             <button type="button" onclick="showView('view-home')">Inicio</button>
@@ -127,20 +124,33 @@
             </button>
             <header class="page-head">
                 <h1>Videos</h1>
-                <p>Contenido audiovisual de Romex</p>
+                <p>Contenido audiovisual institucional</p>
             </header>
-            <div class="videos" id="videos-container">
-                <div class="video">
-                    <iframe src="https://www.youtube.com/embed/8N5wjtC0hvc" title="Video 1" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+
+            <!-- Featured video (first) -->
+            <div class="video-featured">
+                <div class="video-frame">
+                    <iframe src="https://www.youtube.com/embed/8N5wjtC0hvc" title="Video principal" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
-                <div class="video">
-                    <iframe src="https://www.youtube.com/embed/ZP3aCDd54tM" title="Video 2" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                <p class="video-label">Video principal</p>
+            </div>
+
+            <!-- Secondary videos -->
+            <div class="video-grid">
+                <div class="video-item">
+                    <div class="video-frame">
+                        <iframe src="https://www.youtube.com/embed/ZP3aCDd54tM" title="Video 2" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    </div>
                 </div>
-                <div class="video">
-                    <iframe src="https://www.youtube.com/embed/GuzLw5_Me1k" title="Video 3" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                <div class="video-item">
+                    <div class="video-frame">
+                        <iframe src="https://www.youtube.com/embed/GuzLw5_Me1k" title="Video 3" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    </div>
                 </div>
-                <div class="video">
-                    <iframe src="https://www.youtube.com/embed/SLW8wkg0jGw" title="Video 4" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                <div class="video-item">
+                    <div class="video-frame">
+                        <iframe src="https://www.youtube.com/embed/SLW8wkg0jGw" title="Video 4" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    </div>
                 </div>
             </div>
         </section>
@@ -149,11 +159,9 @@
 
     <footer class="footer">
         <div class="footer-inner">
-            <div class="footer-brand">
-                <strong>ROMEX S.A.</strong>
-                <span>Exportadora de Café y Cacao del Perú</span>
-            </div>
-            <p class="footer-copy">Proyecto educativo · Alianza SENATI</p>
+            <span class="footer-name">ROMEX S.A.</span>
+            <span class="footer-desc">Exportadora de Café y Cacao del Perú</span>
+            <span class="footer-copy">Proyecto educativo · Alianza SENATI</span>
         </div>
     </footer>
 
