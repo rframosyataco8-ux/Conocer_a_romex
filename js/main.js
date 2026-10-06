@@ -2,8 +2,8 @@ let currentStep = 0;
 
 function showView(viewId) {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-    const target = document.getElementById(viewId);
-    if (target) target.classList.add('active');
+    const el = document.getElementById(viewId);
+    if (el) el.classList.add('active');
 
     if (viewId === 'view-process') {
         currentStep = 0;
@@ -14,38 +14,31 @@ function showView(viewId) {
 }
 
 function renderTimeline() {
-    const container = document.getElementById('timeline-container');
-    if (!container || typeof timelineData === 'undefined') return;
+    const box = document.getElementById('timeline-container');
+    if (!box || typeof timelineData === 'undefined') return;
 
-    container.innerHTML = timelineData.map(item => `
-        <div class="timeline-item">
+    box.innerHTML = timelineData.map(item => `
+        <article class="timeline-item">
             ${item.image ? `<img class="timeline-img" src="${item.image}" alt="${item.year}" loading="lazy" onerror="this.style.display='none'">` : ''}
             <div class="timeline-content">
                 <div class="timeline-year">${item.year}</div>
                 <div class="timeline-desc">${item.description}</div>
             </div>
-        </div>
+        </article>
     `).join('');
 }
 
 function renderProcess() {
-    const container = document.getElementById('process-container');
-    if (!container || typeof processData === 'undefined') return;
+    const box = document.getElementById('process-container');
+    if (!box || typeof processData === 'undefined') return;
 
-    container.innerHTML = processData.map((step, index) => `
-        <div class="step-card ${index === 0 ? 'active' : ''}" data-step="${index}">
-            <div class="step-body">
-                <div class="step-icon">
-                    <span class="material-icons">${step.icon}</span>
-                </div>
-                <div class="step-text">
-                    <h4>
-                        <span class="step-num">${step.number}</span>
-                        ${step.title}
-                    </h4>
-                    <p>${step.description}</p>
-                </div>
+    box.innerHTML = processData.map((step, i) => `
+        <div class="step-card ${i === 0 ? 'active' : ''}" data-step="${i}">
+            <div class="step-head">
+                <span class="step-num">${step.number}</span>
+                <h3>${step.title}</h3>
             </div>
+            <p>${step.description}</p>
         </div>
     `).join('');
 
@@ -53,70 +46,53 @@ function renderProcess() {
     updateProcessUI();
 }
 
-function changeStep(direction) {
+function changeStep(dir) {
     const total = processData.length;
-    currentStep = Math.max(0, Math.min(total - 1, currentStep + direction));
+    currentStep = Math.max(0, Math.min(total - 1, currentStep + dir));
     updateProcessUI();
 }
 
 function updateProcessUI() {
     const total = processData.length;
 
-    document.querySelectorAll('.step-card').forEach((card, index) => {
-        card.classList.toggle('active', index === currentStep);
+    document.querySelectorAll('.step-card').forEach((card, i) => {
+        card.classList.toggle('active', i === currentStep);
     });
 
-    const percent = ((currentStep + 1) / total) * 100;
-    document.getElementById('progress-fill').style.width = percent + '%';
+    document.getElementById('progress-fill').style.width = ((currentStep + 1) / total * 100) + '%';
     document.getElementById('progress-current').textContent = currentStep + 1;
 
     document.getElementById('btn-prev').disabled = currentStep === 0;
-    document.getElementById('btn-next').disabled = currentStep === total - 1;
-
-    const nextBtn = document.getElementById('btn-next');
-    if (currentStep === total - 1) {
-        nextBtn.innerHTML = 'Finalizado <span class="material-icons">check</span>';
-    } else {
-        nextBtn.innerHTML = 'Siguiente <span class="material-icons">arrow_forward</span>';
-    }
+    const next = document.getElementById('btn-next');
+    next.disabled = currentStep === total - 1;
+    next.textContent = currentStep === total - 1 ? 'Finalizado' : 'Siguiente';
 }
 
-function initCookieConsent() {
+function initCookies() {
     const banner = document.getElementById('cookie-banner');
     if (!banner) return;
 
-    const consent = localStorage.getItem('romex_cookie_consent');
-    if (!consent) {
-        setTimeout(() => banner.classList.add('show'), 800);
+    if (!localStorage.getItem('romex_cookie_consent')) {
+        setTimeout(() => banner.classList.add('show'), 600);
     }
 
-    document.getElementById('cookie-accept').addEventListener('click', () => {
+    document.getElementById('cookie-accept').onclick = () => {
         localStorage.setItem('romex_cookie_consent', 'accepted');
         banner.classList.remove('show');
-    });
+    };
 
-    document.getElementById('cookie-reject').addEventListener('click', () => {
+    document.getElementById('cookie-reject').onclick = () => {
         localStorage.setItem('romex_cookie_consent', 'rejected');
         banner.classList.remove('show');
-    });
-}
-
-function initScrollTop() {
-    const btn = document.getElementById('scroll-top');
-    if (!btn) return;
-
-    window.addEventListener('scroll', () => {
-        btn.classList.toggle('visible', window.scrollY > 280);
-    });
+    };
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     renderTimeline();
     renderProcess();
-    initCookieConsent();
-    initScrollTop();
+    initCookies();
 
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', e => {
         if (e.key === 'Escape') showView('view-home');
         if (document.getElementById('view-process').classList.contains('active')) {
             if (e.key === 'ArrowRight') changeStep(1);

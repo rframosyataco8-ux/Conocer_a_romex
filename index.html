@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Exportadora Romex S.A. - Interfaz educativa sobre cacao y línea de tiempo">
-    <meta name="theme-color" content="#0d47a1">
-    <title>Exportadora Romex S.A.</title>
-    
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍫</text></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Exportadora Romex S.A. — Café y cacao del Perú">
+    <meta name="theme-color" content="#0a2e6b">
+    <title>Romex S.A. | Exportadora de Café y Cacao</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a2e6b' width='100' height='100' rx='20'/><text y='68' x='50' text-anchor='middle' font-size='48' font-weight='700' fill='white' font-family='sans-serif'>R</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -17,139 +16,131 @@
     <header class="header">
         <a href="#" class="logo" onclick="showView('view-home'); return false;">
             <div class="logo-mark">R</div>
-            <div class="logo-text">ROMEX <span>S.A.</span></div>
+            <div class="logo-text">
+                <strong>ROMEX</strong>
+                <span>S.A.</span>
+            </div>
         </a>
+        <nav class="nav">
+            <button type="button" onclick="showView('view-home')">Inicio</button>
+            <button type="button" onclick="showView('view-timeline')">Historia</button>
+            <button type="button" onclick="showView('view-process')">Proceso</button>
+            <button type="button" onclick="showView('view-video')">Videos</button>
+        </nav>
     </header>
 
-    <main class="container">
+    <main class="main">
 
         <!-- HOME -->
         <section id="view-home" class="view active">
             <div class="hero">
-                <img class="hero-image" src="assets/images/chocolate-home-romex.jpg" alt="Romex chocolate" loading="lazy" onerror="this.style.display='none'">
-                <h1>Exportadora Romex</h1>
-                <p>Selecciona una opción para continuar</p>
+                <p class="hero-eyebrow">Exportadora de Café y Cacao del Perú</p>
+                <h1>Excelencia desde<br>el origen</h1>
+                <p class="hero-sub">Conoce la historia, el proceso industrial y el compromiso de calidad de Exportadora Romex S.A.</p>
             </div>
 
-            <div class="cards-row">
-                <a href="https://romex.pe/es/nosotros/" target="_blank" rel="noopener" class="card">
-                    <div class="card-icon blue">
-                        <span class="material-icons">business</span>
+            <div class="modules">
+                <a href="https://romex.pe/es/nosotros/" target="_blank" rel="noopener" class="module">
+                    <span class="module-num">01</span>
+                    <div class="module-body">
+                        <h2>Conoce Nosotros</h2>
+                        <p>Sitio oficial, valores y operaciones de la empresa.</p>
                     </div>
-                    <h3>Conoce Nosotros</h3>
-                    <p>Sitio oficial de Romex</p>
+                    <span class="module-arrow material-icons">arrow_forward</span>
                 </a>
 
-                <div class="card" onclick="showView('view-timeline')">
-                    <div class="card-icon green">
-                        <span class="material-icons">timeline</span>
+                <button type="button" class="module" onclick="showView('view-timeline')">
+                    <span class="module-num">02</span>
+                    <div class="module-body">
+                        <h2>Línea de Tiempo</h2>
+                        <p>Hitos desde 1957 hasta la actualidad.</p>
                     </div>
-                    <h3>Línea de Tiempo</h3>
-                    <p>Historia de la empresa</p>
-                </div>
+                    <span class="module-arrow material-icons">arrow_forward</span>
+                </button>
 
-                <div class="card" onclick="showView('view-process')">
-                    <div class="card-icon orange">
-                        <span class="material-icons">agriculture</span>
+                <button type="button" class="module" onclick="showView('view-process')">
+                    <span class="module-num">03</span>
+                    <div class="module-body">
+                        <h2>Transformación</h2>
+                        <p>Proceso del grano: recepción hasta despacho.</p>
                     </div>
-                    <h3>Transformación</h3>
-                    <p>Proceso del cacao</p>
-                </div>
+                    <span class="module-arrow material-icons">arrow_forward</span>
+                </button>
 
-                <div class="card" onclick="showView('view-video')">
-                    <div class="card-icon purple">
-                        <span class="material-icons">play_circle</span>
+                <button type="button" class="module" onclick="showView('view-video')">
+                    <span class="module-num">04</span>
+                    <div class="module-body">
+                        <h2>Videos</h2>
+                        <p>Contenido audiovisual institucional.</p>
                     </div>
-                    <h3>Video</h3>
-                    <p>Contenido audiovisual</p>
-                </div>
+                    <span class="module-arrow material-icons">arrow_forward</span>
+                </button>
             </div>
         </section>
 
         <!-- TIMELINE -->
         <section id="view-timeline" class="view">
-            <button class="back-btn" onclick="showView('view-home')">
+            <button type="button" class="back" onclick="showView('view-home')">
                 <span class="material-icons">arrow_back</span>
-                Volver
+                Inicio
             </button>
-
-            <div class="section-header">
-                <h2>Línea de Tiempo</h2>
-                <p>Hitos principales de Exportadora Romex S.A.</p>
-            </div>
-
+            <header class="page-head">
+                <h1>Línea de Tiempo</h1>
+                <p>Principales hitos de Exportadora Romex S.A.</p>
+            </header>
             <div class="timeline" id="timeline-container"></div>
         </section>
 
         <!-- PROCESS -->
         <section id="view-process" class="view">
-            <button class="back-btn" onclick="showView('view-home')">
+            <button type="button" class="back" onclick="showView('view-home')">
                 <span class="material-icons">arrow_back</span>
-                Volver
+                Inicio
             </button>
+            <header class="page-head">
+                <h1>Transformación del Grano</h1>
+                <p>Proceso industrial del cacao con trazabilidad completa</p>
+            </header>
 
-            <div class="section-header">
-                <h2>Transformación del Grano</h2>
-                <p>Proceso industrial del cacao</p>
+            <div class="process-note">
+                Los granos llegan desde 12 centros de acopio en las principales zonas cacaoteras del Perú. Cada lote es controlado en origen, calidad y humedad.
             </div>
 
-            <div class="process-intro">
-                Romex trabaja con trazabilidad completa. Los granos llegan desde 12 centros de acopio en las principales zonas cacaoteras del Perú.
+            <div class="process-bar">
+                <div class="process-bar-fill" id="progress-fill"></div>
             </div>
+            <p class="process-count">Etapa <span id="progress-current">1</span> de <span id="progress-total">7</span></p>
 
-            <div class="process-progress">
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progress-fill"></div>
-                </div>
-                <div class="progress-text">
-                    Etapa <span id="progress-current">1</span> de <span id="progress-total">7</span>
-                </div>
-            </div>
+            <div id="process-container"></div>
 
-            <div class="process-steps" id="process-container"></div>
-
-            <div class="process-nav">
-                <button class="btn-nav" id="btn-prev" onclick="changeStep(-1)" disabled>
-                    <span class="material-icons">arrow_back</span> Anterior
-                </button>
-                <button class="btn-nav primary" id="btn-next" onclick="changeStep(1)">
-                    Siguiente <span class="material-icons">arrow_forward</span>
-                </button>
+            <div class="process-actions">
+                <button type="button" class="btn btn-ghost" id="btn-prev" onclick="changeStep(-1)" disabled>Anterior</button>
+                <button type="button" class="btn btn-primary" id="btn-next" onclick="changeStep(1)">Siguiente</button>
             </div>
         </section>
 
         <!-- VIDEO -->
         <section id="view-video" class="view">
-            <button class="back-btn" onclick="showView('view-home')">
+            <button type="button" class="back" onclick="showView('view-home')">
                 <span class="material-icons">arrow_back</span>
-                Volver
+                Inicio
             </button>
-
-            <div class="section-header">
-                <h2>Videos</h2>
+            <header class="page-head">
+                <h1>Videos</h1>
                 <p>Contenido audiovisual de Romex</p>
-            </div>
-
-            <div class="videos-grid">
-                <div class="video-card">
-                    <div class="video-frame">
-                        <iframe src="https://www.youtube.com/embed/8N5wjtC0hvc" title="Video 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
+            </header>
+            <div class="videos" id="videos-container">
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/8N5wjtC0hvc" title="Video 1" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
-                <div class="video-card">
-                    <div class="video-frame">
-                        <iframe src="https://www.youtube.com/embed/ZP3aCDd54tM" title="Video 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/ZP3aCDd54tM" title="Video 2" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
-                <div class="video-card">
-                    <div class="video-frame">
-                        <iframe src="https://www.youtube.com/embed/GuzLw5_Me1k" title="Video 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/GuzLw5_Me1k" title="Video 3" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
-                <div class="video-card">
-                    <div class="video-frame">
-                        <iframe src="https://www.youtube.com/embed/SLW8wkg0jGw" title="Video 4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/SLW8wkg0jGw" title="Video 4" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
         </section>
@@ -157,32 +148,22 @@
     </main>
 
     <footer class="footer">
-        <div class="footer-content">
-            <strong>ROMEX S.A.</strong>
-            <span>Exportadora de Café y Cacao del Perú</span>
-            <p>Proyecto educativo • Alianza SENATI</p>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <strong>ROMEX S.A.</strong>
+                <span>Exportadora de Café y Cacao del Perú</span>
+            </div>
+            <p class="footer-copy">Proyecto educativo · Alianza SENATI</p>
         </div>
     </footer>
 
-    <div id="cookie-banner" class="cookie-banner">
-        <div class="cookie-content">
-            <div class="cookie-text">
-                <span class="material-icons cookie-icon">cookie</span>
-                <div>
-                    <strong>Usamos cookies</strong>
-                    <p>Este sitio utiliza cookies esenciales para mejorar tu experiencia.</p>
-                </div>
-            </div>
-            <div class="cookie-actions">
-                <button id="cookie-reject" class="btn-cookie btn-reject">Rechazar</button>
-                <button id="cookie-accept" class="btn-cookie btn-accept">Aceptar</button>
-            </div>
+    <div id="cookie-banner" class="cookie">
+        <p>Utilizamos cookies esenciales para el funcionamiento del sitio.</p>
+        <div class="cookie-btns">
+            <button type="button" id="cookie-reject" class="btn btn-ghost">Rechazar</button>
+            <button type="button" id="cookie-accept" class="btn btn-primary">Aceptar</button>
         </div>
     </div>
-
-    <button id="scroll-top" class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-        <span class="material-icons">keyboard_arrow_up</span>
-    </button>
 
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
