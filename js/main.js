@@ -6,7 +6,7 @@ function showView(viewId) {
     if (el) el.classList.add('active');
 
     if (viewId === 'view-timeline' || viewId === 'view-process') {
-        requestAnimationFrame(() => setTimeout(initStoryReveal, 80));
+        requestAnimationFrame(() => setTimeout(initStoryReveal, 60));
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -34,7 +34,7 @@ function renderTimeline() {
     box.innerHTML += `
         <div class="plant-mention">
             <img src="assets/images/Planta_Exportadora%20RomEx_actual.jpg" alt="Planta Exportadora Romex" loading="lazy" onerror="this.style.display='none'">
-            <p>Planta Exportadora Romex — instalaciones actuales</p>
+            <p>Planta Exportadora Romex S.A. — instalaciones actuales</p>
         </div>
     `;
 }
@@ -57,7 +57,7 @@ function renderProcess() {
             </div>
             ${hasImage ? `
             <div class="story-media">
-                <img src="${step.image}" alt="${step.title}" loading="lazy" onerror="this.parentElement.classList.add('media-fallback')">
+                <img src="${step.image}" alt="${step.title}" loading="lazy" onerror="this.parentElement.classList.add('process-visual')">
             </div>` : `
             <div class="story-media process-visual">
                 <div class="process-visual-inner">
@@ -75,7 +75,7 @@ function initStoryReveal() {
         storyObserver = null;
     }
 
-    const blocks = document.querySelectorAll('.story-block, .plant-mention');
+    const blocks = document.querySelectorAll('#view-timeline.active .story-block, #view-timeline.active .plant-mention, #view-process.active .story-block');
     if (!blocks.length) return;
 
     blocks.forEach(b => b.classList.remove('is-visible'));
@@ -89,7 +89,7 @@ function initStoryReveal() {
                 }
             });
         },
-        { root: null, rootMargin: '0px 0px -8% 0px', threshold: 0.1 }
+        { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.08 }
     );
 
     blocks.forEach(b => storyObserver.observe(b));
@@ -100,7 +100,7 @@ function initCookies() {
     if (!banner) return;
 
     if (!localStorage.getItem('romex_cookie_consent')) {
-        setTimeout(() => banner.classList.add('show'), 600);
+        setTimeout(() => banner.classList.add('show'), 800);
     }
 
     document.getElementById('cookie-accept').onclick = () => {
@@ -118,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderTimeline();
     renderProcess();
     initCookies();
-    initStoryReveal();
 
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape') showView('view-home');

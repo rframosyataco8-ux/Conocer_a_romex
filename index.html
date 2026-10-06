@@ -3,89 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Exportadora Romex S.A. — Café y cacao del Perú">
+    <meta name="description" content="Exportadora Romex S.A. — Café y cacao del Perú. Historia, proceso industrial y videos.">
     <meta name="theme-color" content="#ffffff">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>Exportadora Romex S.A. | Café y Cacao del Perú</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=20261006b">
+    <link rel="stylesheet" href="css/styles.css?v=20261006c">
 </head>
 <body>
 
     <main class="main">
 
+        <!-- HOME -->
         <section id="view-home" class="view active">
             <div class="hero">
-                <p class="hero-eyebrow">Exportadora de Café y Cacao del Perú</p>
+                <div class="hero-badge">Exportadora Romex S.A.</div>
                 <h1>Excelencia desde<br>el origen</h1>
-                <p class="hero-sub">Conoce la historia, el proceso industrial y el compromiso de calidad de Exportadora Romex S.A.</p>
+                <p class="hero-sub">Café y cacao del Perú con trazabilidad completa. Conoce nuestra historia, el proceso industrial y el compromiso con la calidad.</p>
             </div>
 
             <div class="grid">
                 <a href="https://romex.pe/es/inicio/" target="_blank" rel="noopener" class="grid-card">
                     <span class="grid-num">01</span>
+                    <div class="grid-icon"><span class="material-icons">public</span></div>
                     <h2>Conoce Nosotros</h2>
-                    <p>Sitio oficial, valores y operaciones.</p>
-                    <span class="grid-link">Visitar sitio →</span>
+                    <p>Sitio oficial, fincas, certificaciones y marcas.</p>
+                    <span class="grid-link">Visitar sitio oficial <span class="material-icons">arrow_forward</span></span>
                 </a>
                 <button type="button" class="grid-card" onclick="showView('view-timeline')">
                     <span class="grid-num">02</span>
+                    <div class="grid-icon"><span class="material-icons">timeline</span></div>
                     <h2>Línea de Tiempo</h2>
-                    <p>Hitos desde 1957 hasta hoy.</p>
-                    <span class="grid-link">Explorar →</span>
+                    <p>Hitos desde 1957 hasta la actualidad.</p>
+                    <span class="grid-link">Explorar historia <span class="material-icons">arrow_forward</span></span>
                 </button>
                 <button type="button" class="grid-card" onclick="showView('view-process')">
                     <span class="grid-num">03</span>
+                    <div class="grid-icon"><span class="material-icons">precision_manufacturing</span></div>
                     <h2>Transformación</h2>
-                    <p>Del grano al producto final.</p>
-                    <span class="grid-link">Ver proceso →</span>
+                    <p>Del grano de cacao al producto final.</p>
+                    <span class="grid-link">Ver proceso <span class="material-icons">arrow_forward</span></span>
                 </button>
                 <button type="button" class="grid-card" onclick="showView('view-video')">
                     <span class="grid-num">04</span>
+                    <div class="grid-icon"><span class="material-icons">play_circle</span></div>
                     <h2>Videos</h2>
                     <p>Contenido audiovisual institucional.</p>
-                    <span class="grid-link">Ver videos →</span>
+                    <span class="grid-link">Ver videos <span class="material-icons">arrow_forward</span></span>
                 </button>
             </div>
         </section>
 
+        <!-- TIMELINE -->
         <section id="view-timeline" class="view">
             <button type="button" class="back" onclick="showView('view-home')">
-                <span class="material-icons">arrow_back</span> Volver
+                <span class="material-icons">arrow_back</span> Volver al inicio
             </button>
 
             <div class="story-intro">
                 <p class="story-eyebrow">Nuestra historia</p>
                 <h1>Línea de Tiempo</h1>
-                <p class="story-lead">Desplázate para recorrer los hitos de Exportadora Romex S.A.</p>
+                <p class="story-lead">Desplázate para recorrer los hitos de Exportadora Romex S.A. desde 1957.</p>
             </div>
 
             <div class="story" id="timeline-container"></div>
         </section>
 
+        <!-- PROCESS -->
         <section id="view-process" class="view">
             <button type="button" class="back" onclick="showView('view-home')">
-                <span class="material-icons">arrow_back</span> Volver
+                <span class="material-icons">arrow_back</span> Volver al inicio
             </button>
 
             <div class="story-intro">
                 <p class="story-eyebrow">Proceso industrial</p>
                 <h1>Transformación del grano</h1>
-                <p class="story-lead">Desplázate para recorrer cada etapa: del cacao en grano al producto final.</p>
+                <p class="story-lead">Siete etapas con trazabilidad completa: del cacao en grano al producto listo para despacho.</p>
             </div>
 
             <div class="story" id="process-container"></div>
         </section>
 
+        <!-- VIDEO -->
         <section id="view-video" class="view">
             <button type="button" class="back" onclick="showView('view-home')">
-                <span class="material-icons">arrow_back</span> Volver
+                <span class="material-icons">arrow_back</span> Volver al inicio
             </button>
-            <header class="page-head">
+
+            <div class="story-intro">
+                <p class="story-eyebrow">Multimedia</p>
                 <h1>Videos</h1>
-                <p>Contenido audiovisual institucional</p>
-            </header>
+                <p class="story-lead">Contenido audiovisual institucional de Exportadora Romex S.A.</p>
+            </div>
+
             <div class="video-featured">
                 <div class="video-frame">
                     <iframe src="https://www.youtube.com/embed/8N5wjtC0hvc" title="Video principal" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -115,6 +127,7 @@
     <footer class="footer">
         <div class="footer-inner">
             <span class="footer-name">Exportadora Romex S.A.</span>
+            <span class="footer-desc">Café y cacao del Perú</span>
             <span class="footer-copy">Proyecto educativo · Alianza SENATI</span>
         </div>
     </footer>
@@ -127,7 +140,7 @@
         </div>
     </div>
 
-    <script src="js/data.js?v=20261006b"></script>
-    <script src="js/main.js?v=20261006b"></script>
+    <script src="js/data.js?v=20261006c"></script>
+    <script src="js/main.js?v=20261006c"></script>
 </body>
 </html>
