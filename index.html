@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Exportadora Romex S.A. — Café y cacao del Perú">
-    <meta name="theme-color" content="#0a2e6b">
+    <meta name="theme-color" content="#ffffff">
     <title>Romex S.A. | Exportadora de Café y Cacao</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -28,7 +28,7 @@
 
     <main class="main">
 
-        <!-- HOME: grid limpio -->
+        <!-- HOME -->
         <section id="view-home" class="view active">
             <div class="hero">
                 <p class="hero-eyebrow">Exportadora de Café y Cacao del Perú</p>
@@ -64,39 +64,19 @@
             </div>
         </section>
 
-        <!-- TIMELINE: split-screen + lista -->
+        <!-- TIMELINE: scrollytelling -->
         <section id="view-timeline" class="view">
             <button type="button" class="back" onclick="showView('view-home')">
                 <span class="material-icons">arrow_back</span> Inicio
             </button>
 
-            <!-- Split-screen intro de la historia -->
-            <div class="split">
-                <div class="split-left">
-                    <p class="split-eyebrow">Nuestra historia</p>
-                    <h1>Más de 60 años<br>de trayectoria</h1>
-                    <p class="split-text">Desde el nacimiento de Cafetal en 1957 hasta la planta actual en Cajamarquilla, Romex ha crecido con el café y el cacao peruano.</p>
-                </div>
-                <div class="split-right">
-                    <div class="split-panel">
-                        <div class="split-stat">
-                            <span class="stat-value">1957</span>
-                            <span class="stat-label">Fundación</span>
-                        </div>
-                        <div class="split-stat">
-                            <span class="stat-value">2009</span>
-                            <span class="stat-label">Nace Romex S.A.</span>
-                        </div>
-                        <div class="split-stat">
-                            <span class="stat-value">Hoy</span>
-                            <span class="stat-label">Planta Cajamarquilla</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="story-intro">
+                <p class="story-eyebrow">Nuestra historia</p>
+                <h1>Línea de Tiempo</h1>
+                <p class="story-lead">Desplázate para recorrer los hitos de Exportadora Romex S.A.</p>
             </div>
 
-            <div class="timeline-label">Hitos principales</div>
-            <div class="timeline" id="timeline-container"></div>
+            <div class="story" id="timeline-container"></div>
         </section>
 
         <!-- PROCESS -->
@@ -109,7 +89,7 @@
                 <p>Proceso industrial del cacao con trazabilidad completa</p>
             </header>
             <div class="process-note">
-                Los granos llegan desde 12 centros de acopio en las principales zonas cacaoteras del Perú. Cada lote es controlado en origen, calidad y humedad.
+                Los granos llegan a planta desde los centros de acopio. Cada lote es controlado en origen, calidad y humedad.
             </div>
             <div class="process-bar"><div class="process-bar-fill" id="progress-fill"></div></div>
             <p class="process-count">Etapa <span id="progress-current">1</span> de <span id="progress-total">7</span></p>
@@ -133,7 +113,6 @@
                 <div class="video-frame">
                     <iframe src="https://www.youtube.com/embed/8N5wjtC0hvc" title="Video principal" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
-                <p class="video-label">Video principal</p>
             </div>
             <div class="video-grid">
                 <div class="video-item">

@@ -18,11 +18,15 @@ function renderTimeline() {
     if (!box || typeof timelineData === 'undefined') return;
 
     box.innerHTML = timelineData.map(item => `
-        <article class="timeline-item">
-            ${item.image ? `<img class="timeline-img" src="${item.image}" alt="${item.year}" loading="lazy" onerror="this.style.display='none'">` : ''}
-            <div class="timeline-content">
-                <div class="timeline-year">${item.year}</div>
-                <div class="timeline-desc">${item.description}</div>
+        <article class="story-block">
+            <div class="story-text">
+                <div class="story-year">${item.year}</div>
+                <p>${item.description}</p>
+            </div>
+            <div class="story-media">
+                ${item.image
+                    ? `<img src="${item.image}" alt="${item.year}" loading="lazy" onerror="this.parentElement.style.display='none'">`
+                    : ''}
             </div>
         </article>
     `).join('');
