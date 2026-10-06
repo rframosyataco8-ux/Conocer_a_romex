@@ -6,7 +6,7 @@ function showView(viewId) {
     if (el) el.classList.add('active');
 
     if (viewId === 'view-timeline' || viewId === 'view-process') {
-        requestAnimationFrame(() => setTimeout(initStoryReveal, 60));
+        requestAnimationFrame(() => setTimeout(initStoryReveal, 50));
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -75,7 +75,9 @@ function initStoryReveal() {
         storyObserver = null;
     }
 
-    const blocks = document.querySelectorAll('#view-timeline.active .story-block, #view-timeline.active .plant-mention, #view-process.active .story-block');
+    const blocks = document.querySelectorAll(
+        '#view-timeline.active .story-block, #view-timeline.active .plant-mention, #view-process.active .story-block'
+    );
     if (!blocks.length) return;
 
     blocks.forEach(b => b.classList.remove('is-visible'));
@@ -89,7 +91,7 @@ function initStoryReveal() {
                 }
             });
         },
-        { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.08 }
+        { root: null, rootMargin: '0px 0px -12% 0px', threshold: 0.08 }
     );
 
     blocks.forEach(b => storyObserver.observe(b));
@@ -100,7 +102,7 @@ function initCookies() {
     if (!banner) return;
 
     if (!localStorage.getItem('romex_cookie_consent')) {
-        setTimeout(() => banner.classList.add('show'), 800);
+        setTimeout(() => banner.classList.add('show'), 900);
     }
 
     document.getElementById('cookie-accept').onclick = () => {
