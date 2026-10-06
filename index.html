@@ -28,40 +28,14 @@
 
     <main class="main">
 
-        <!-- ════════ HOME: Split-screen + Grid ════════ -->
+        <!-- HOME: grid limpio -->
         <section id="view-home" class="view active">
-
-            <!-- Split-screen hero -->
-            <div class="split">
-                <div class="split-left">
-                    <p class="split-eyebrow">Exportadora · Perú</p>
-                    <h1>Café y cacao<br>de excelencia</h1>
-                    <p class="split-text">Desde 1957, Romex lleva el sabor y la calidad del Perú al mundo. Explora nuestra historia, proceso y compromiso con la trazabilidad.</p>
-                    <div class="split-actions">
-                        <button type="button" class="btn btn-primary" onclick="showView('view-timeline')">Ver historia</button>
-                        <button type="button" class="btn btn-ghost" onclick="showView('view-process')">Ver proceso</button>
-                    </div>
-                </div>
-                <div class="split-right">
-                    <div class="split-panel">
-                        <div class="split-stat">
-                            <span class="stat-value">1957</span>
-                            <span class="stat-label">Año de origen</span>
-                        </div>
-                        <div class="split-stat">
-                            <span class="stat-value">12</span>
-                            <span class="stat-label">Centros de acopio</span>
-                        </div>
-                        <div class="split-stat">
-                            <span class="stat-value">100%</span>
-                            <span class="stat-label">Trazabilidad</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="hero">
+                <p class="hero-eyebrow">Exportadora de Café y Cacao del Perú</p>
+                <h1>Excelencia desde<br>el origen</h1>
+                <p class="hero-sub">Conoce la historia, el proceso industrial y el compromiso de calidad de Exportadora Romex S.A.</p>
             </div>
 
-            <!-- Grid de módulos -->
-            <div class="grid-label">Explorar</div>
             <div class="grid">
                 <a href="https://romex.pe/es/nosotros/" target="_blank" rel="noopener" class="grid-card">
                     <span class="grid-num">01</span>
@@ -88,18 +62,40 @@
                     <span class="grid-link">Ver videos →</span>
                 </button>
             </div>
-
         </section>
 
-        <!-- TIMELINE -->
+        <!-- TIMELINE: split-screen + lista -->
         <section id="view-timeline" class="view">
             <button type="button" class="back" onclick="showView('view-home')">
                 <span class="material-icons">arrow_back</span> Inicio
             </button>
-            <header class="page-head">
-                <h1>Línea de Tiempo</h1>
-                <p>Principales hitos de Exportadora Romex S.A.</p>
-            </header>
+
+            <!-- Split-screen intro de la historia -->
+            <div class="split">
+                <div class="split-left">
+                    <p class="split-eyebrow">Nuestra historia</p>
+                    <h1>Más de 60 años<br>de trayectoria</h1>
+                    <p class="split-text">Desde el nacimiento de Cafetal en 1957 hasta la planta actual en Cajamarquilla, Romex ha crecido con el café y el cacao peruano.</p>
+                </div>
+                <div class="split-right">
+                    <div class="split-panel">
+                        <div class="split-stat">
+                            <span class="stat-value">1957</span>
+                            <span class="stat-label">Fundación</span>
+                        </div>
+                        <div class="split-stat">
+                            <span class="stat-value">2009</span>
+                            <span class="stat-label">Nace Romex S.A.</span>
+                        </div>
+                        <div class="split-stat">
+                            <span class="stat-value">Hoy</span>
+                            <span class="stat-label">Planta Cajamarquilla</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-label">Hitos principales</div>
             <div class="timeline" id="timeline-container"></div>
         </section>
 
