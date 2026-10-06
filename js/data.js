@@ -74,9 +74,6 @@ const timelineData = [
     }
 ];
 
-// Mención final (no es un hito de la línea de tiempo)
-const plantImage = "assets/images/Planta_Exportadora%20RomEx_actual.jpg";
-
 const processData = [
     {
         number: 1,
